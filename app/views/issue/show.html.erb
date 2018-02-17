@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div align="center">
+    <FONT size="5"><%= @issue.title %></FONT><span>の詳細</span>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="row">名前</th>
+          <td><%= @issue.title %></td>
+        </tr>
+        <tr>
+          <th scope="row">リンク</th>
+          <td><%= @issue.url %></td>
+        </tr>
+        <tr>
+          <th scope="row">説明</th>
+          <td><%= @issue.description %></td>
+        </tr>
+        <tr>
+          <th scope="row">対象</th>
+          <td><%= @issue.target %></td>
+        </tr>
+        <tr>
+          <th scope="row">利率</th>
+          <td><%= @issue.rate %></td>
+        </tr>
+        <tr>
+          <th scope="row">月支払額</th>
+          <td><%= @issue.payment %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

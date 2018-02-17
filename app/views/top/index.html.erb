@@ -1,0 +1,18 @@
+<section class="main-header">
+    <section class="scholarship-issue">
+        <h1><FONT size="7">Scholarship</FONT> <FONT size="7" color="red">Evaluate</FONT> <FONT size="7">Site</FONT></h1>
+        <center>
+          <p>奨学金の格付けサイト</p>
+        </center>
+    </section>
+    <center>
+      <h3>奨学金一覧</h3>
+      <% @issues.each do |issue| %>
+        <div>
+          <%= link_to issue do %>
+            <%= issue.title %>
+          <% end %>
+        </div>
+      <% end %>
+    </center>
+</section>

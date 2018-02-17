@@ -1,0 +1,12 @@
+<div class="container-fluid">
+  <div align="center">
+    <FONT size="5">掲載中の奨学金一覧</FONT>
+    <% @issues.each do |issue| %>
+      <div>
+        <%= link_to issue do %>
+          <%= issue.title %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
