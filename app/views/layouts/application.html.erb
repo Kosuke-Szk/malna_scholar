@@ -4,10 +4,33 @@
     <title>ScholarshipNavi</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <%= javascript_include_tag 'jquery-2.1.3.min' %>
+    <%= javascript_include_tag 'jquery.actual.min' %>
+    <%= javascript_include_tag 'jquery.scrollTo.min' %>
+    <%= javascript_include_tag 'contact' %>
+    <%= javascript_include_tag 'script' %>
+    <%= javascript_include_tag 'smoothscroll' %>
+    <%= javascript_include_tag 'bootstrap' %>
 
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'bootstrap.min' %>
+    <%= stylesheet_link_tag    'font-awesome.min' %>
+    <%= stylesheet_link_tag    'style', media: 'screen' %>
+
+    <!-- meta -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no"/>
+    
+    <!-- google fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:500,300' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Serif:regular,bold"/>
+
+  </head>
+  <%= render 'layouts/header' %>
   <body>
     <%= yield %>
   </body>

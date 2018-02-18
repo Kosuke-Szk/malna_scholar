@@ -1,12 +1,20 @@
-<div class="container-fluid">
-  <div align="center">
-    <FONT size="5">掲載中の奨学金一覧</FONT>
-    <% @issues.each do |issue| %>
-      <div>
-        <%= link_to issue do %>
-          <%= issue.title %>
-        <% end %>
-      </div>
-    <% end %>
+<div class="content-block" id="portfolio">
+  <div class="container portfolio-sec">
+    <header class="block-heading cleafix">
+      <div class="title-page">
+        <p class="main-header">Scholarship </p>
+          <p class="sub-header">奨学金</p>
+        </div>
+    </header>
+
+    <section class="block-body">
+      <% @issues.each do |issue| %>
+        <div class="col-sm-4">
+          <%= link_to issue_path(issue) , class: "recent-work", style: "background-image:url(assets/images/rain_1-320x240.jpg)" do%>
+            <span class="btn btn-o-white"><%= issue.title %></span>
+          <% end %>
+        </div>
+      <% end %>
+    </section>
   </div>
 </div>

@@ -1,6 +1,14 @@
-<div class="container-fluid">
+<div class="content-block" id="portfolio">
+  <div class="container portfolio-sec">
+    <header class="block-heading cleafix">
+      <div class="title-page">
+        <p class="main-header">Scholarship </p>
+          <p class="sub-header">奨学金 <%= @issue.title %></p>
+      </div>
+    </header>
+
+    
   <div align="center">
-    <FONT size="5"><%= @issue.title %></FONT><span>の詳細</span>
     <table class="table">
       <tbody>
         <tr>
@@ -21,13 +29,51 @@
         </tr>
         <tr>
           <th scope="row">利率</th>
-          <td><%= @issue.rate %></td>
+          <td><%= @issue.rate %> % </td>
         </tr>
         <tr>
           <th scope="row">月支払額</th>
-          <td><%= @issue.payment %></td>
+          <td> ¥ <%= @issue.payment %></td>
         </tr>
       </tbody>
     </table>
   </div>
+  <% if user_signed_in? %>
+  <%= link_to 'Edit', edit_issue_path, class: 'btn btn-primary btn-block' %>
+  <%= link_to 'Delete', issue_path(@issue), data: { confirm: "本当に削除しますか?" }, method: :delete, class: 'btn btn-danger btn-block' %>
+  <% end %>
+
+  <div>
+    <p class="main-header">Comment </p>
+
+    <%= form_for(@comment, url: comment_index_path) do  |f| %>
+      <%= f.label :writer %>
+      <%= f.text_field :writer, class: 'form-control' %>
+      <br>
+      <%= f.label :content %>
+      <%= f.text_field :content, class: 'form-control' %>
+      <br>
+      <%= f.hidden_field :issue_id, value: @issue.id, class: 'form-control' %>
+      <br>
+      <%= f.submit 'Send', class: 'btn btn-primary btn-block' %>
+    <% end %>
+
+    <% @comments.each do |comment| %>
+      <div align="center">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">コメント者</th>
+              <td><%= comment.writer %></td>
+            </tr>
+            <tr>
+              <th scope="row">テキスト</th>
+              <td><%= comment.content %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+
 </div>
