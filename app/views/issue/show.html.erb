@@ -17,7 +17,7 @@
         </tr>
         <tr>
           <th scope="row">リンク</th>
-          <td><%= @issue.url %></td>
+          <td><%= link_to "公式ページ", @issue.url, :target=>["_blank"] %></td>
         </tr>
         <tr>
           <th scope="row">説明</th>
@@ -34,6 +34,14 @@
         <tr>
           <th scope="row">月支払額</th>
           <td> ¥ <%= @issue.payment %></td>
+        </tr>
+        <tr>
+          <th scope="row">地域</th>
+          <td><% if @issue.region=="all" %>全国<% else %>@issue.region<% end %></td>
+        </tr>
+        <tr>
+          <th scope="row">領域</th>
+          <td><% if @issue.domain=="all" %>不問<% else %>@issue.domain<% end %></td>
         </tr>
       </tbody>
     </table>
