@@ -47,6 +47,11 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+
+staging:
+  <<: *default
+  database: scholarship_navi_staging
+
 production:
   <<: *default
   database: scholarship_navi_production

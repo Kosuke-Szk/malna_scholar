@@ -45,7 +45,7 @@ set :user,            'deploy'
 set :ssh_options,     {
   forward_agent: true,
   user: fetch(:user),
-  keys: %w(~/.ssh/id_rsa.pub)
+  keys: %w(~/.ssh/id_rsa)
 }
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
