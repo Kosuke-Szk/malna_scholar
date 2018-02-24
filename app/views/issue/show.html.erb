@@ -37,11 +37,11 @@
         </tr>
         <tr>
           <th scope="row">地域</th>
-          <td><% if @issue.region=="all" %>全国<% else %>@issue.region<% end %></td>
+          <td><% if @issue.region=="all" %>全国<% else %><%= @issue.region %><% end %></td>
         </tr>
         <tr>
           <th scope="row">領域</th>
-          <td><% if @issue.domain=="all" %>不問<% else %>@issue.domain<% end %></td>
+          <td><% if @issue.domain=="all" %>不問<% else %><%= @issue.domain %><% end %></td>
         </tr>
       </tbody>
     </table>

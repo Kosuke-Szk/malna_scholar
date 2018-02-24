@@ -65,3 +65,11 @@ gem 'google_drive'
 gem 'googleauth'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+
+group :development do
+  gem 'capistrano',         require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+  gem 'capistrano-rbenv',   require: false
+end
