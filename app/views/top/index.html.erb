@@ -53,38 +53,19 @@
           </header>
           <section class="block-body">
             <div class="row">
-              <div class="col-sm-4 sc_block">
-                <a href="#" class="recent-work"">
-                  <span class="btn btn-o-white">給付型</span>
-                </a>
-              </div>
-              <div class="col-sm-4">
-                <a href="#" class="recent-work">
-                  <span class="btn btn-o-white">無利子</span>
-                </a>
-              </div>
-              <div class="col-sm-4">
-                <a href="#" class="recent-work">
-                  <span class="btn btn-o-white">有利子</span>
-                </a>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-4">
-                <a href="#" class="recent-work">
-                  <span class="btn btn-o-white">専門学校</span>
-                </a>
-              </div>
-              <div class="col-sm-4">
-                <a href="#" class="recent-work">
-                  <span class="btn btn-o-white">Lorem Rocks</span>
-                </a>
-              </div>
-              <div class="col-sm-4">
-                <a href="#" class="recent-work">
-                  <span class="btn btn-o-white">Lorem Rocks</span>
-                </a>
-              </div>
+              <% @issue_regions.each do |region| %>
+                <div class="col-sm-4 sc_block">
+                  <div class="recent-work">
+                    <%= link_to issue_index_path(region: region) do %>
+                      <% if region == 'all' %>
+                        <span class="btn btn-o-white">全国</span>
+                      <% else %>
+                        <span class="btn btn-o-white"><%= region %></span>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
             </div>
           </section>
         </div>
