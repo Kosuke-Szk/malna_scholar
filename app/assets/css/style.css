@@ -164,16 +164,16 @@ header.top-header {
 .shows .navbar-nav {
   float: right;
   margin: 15px 0 0;
-  color: white;
+  color: #6a6a6a;
 }
 .shows h1.logo {
   margin-top: 0px;
-  color: white;
+  color: #6a6a6a;
 }
 
 h1.logo {
   margin-top: 11px;
-  color: white;
+  color: #6a6a6a;
   display: inline-flex;
 }
 #header{  
@@ -184,7 +184,7 @@ h1.logo {
 .navbar-nav {
   float: right;
   margin: 31px 0 0;
-  color: white;
+  color: #6a6a6a;
 }
 #header .top {
   position:fixed;
@@ -214,7 +214,7 @@ h1.logo {
 
 #header .logo, #header .toggleDrawer{
   font-family: 'Raleway', sans-serif;
-  color: white;
+  color: #6a6a6a;
 }
 .logo-head{
   font-family: 'Raleway', sans-serif;
@@ -230,7 +230,7 @@ h1.logo {
   margin-bottom: 15px;
   line-height: 1em;
   font-family: 'Raleway', sans-serif;
-  color: white;
+  color: #6a6a6a;
   font-weight: bold;
 }
 
@@ -352,12 +352,12 @@ h1.logo {
     width: 100%;
     height: 200px;
     /*padding-bottom: 27%;*/
-    /*background: #C3C9CC;*/
-    background-image:url(https://getuikit.com/v2/docs/images/placeholder_200x100.svg);
+    background: #C3C9CC;
+    /*background-image:url(https://getuikit.com/v2/docs/images/placeholder_200x100.svg);*/
     display: table;
     text-align: center;
     vertical-align: middle;
-    padding-top: 22%;
+    /*padding-top: 22%;*/
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -393,9 +393,22 @@ h1.logo {
 .recent-work:hover:before, .recent-work:hover span {
     opacity: 1;
 }
-
-
-
+.recent-work-inner {
+  margin: 15px;
+  /*border: 1px solid;*/
+  height: 170px;
+  position: relative;
+}
+.recent-work-badge {
+  background-color: #EC8C3B;
+  color: white;
+  width: 90px;
+  font-size: 17px;
+  text-align: center;
+  position: absolute;
+  top: 0;  
+  left: 0;
+}
 
 
 /*////////////////////////////////////////////////////////////////////////

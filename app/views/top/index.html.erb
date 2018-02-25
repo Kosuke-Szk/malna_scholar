@@ -7,39 +7,28 @@
   
   <body>
     <div id="wrapper">
-      
-<!--       <div id="header" class="content-block" style="background-image:url(<%= asset_path "header-bg.jpg" %>); height: 820px;">
-        <section class="center" style="padding-top:340px;">
-          <div class="slogan">
-            Malna Scholarship Evaluate
+      <div id="about" class="about-us">
+          <div class="container about-sec">
+              <header class="block-heading cleafix">
+          <div class="title-page">
+            <p class="main-header">Search</p>
+              <p class="sub-header">まずは好きな条件で検索してみてね
+              </p>
           </div>
-          <div class="secondary-slogan">
-            日本初の奨学金ポータルサイト
+        </header>
+          <div>
+            <div class="text-center aboutus-item">
+              <%= form_tag issue_index_path, :method => 'get' do %>
+                <p align="center">
+                  <%= text_field_tag :search, params[:search],class: 'form-control', style: 'width: 400px;'%>
+                  <%= submit_tag "Search", :name => nil , class: "btn btn-o", style: 'margin: 10px;'%>
+                </p>
+              <% end %>
+            </div>
           </div>
-        </section>
-      </div> -->
-
-          <div id="about" class="about-us">
-              <div class="container about-sec">
-                  <header class="block-heading cleafix">
-              <div class="title-page">
-                <p class="main-header">Search</p>
-                  <p class="sub-header">まずは好きな条件で検索してみてね
-                  </p>
-              </div>
-            </header>
-              <div>
-                <div class="text-center aboutus-item">
-                  <%= form_tag issue_index_path, :method => 'get' do %>
-                    <p align="center">
-                      <%= text_field_tag :search, params[:search],class: 'form-control', style: 'width: 400px;'%>
-                      <%= submit_tag "Search", :name => nil , class: "btn btn-o", style: 'margin: 10px;'%>
-                    </p>
-                  <% end %>
-                </div>
-              </div>
-              </div>
           </div>
+      </div>
+      <!-- Location  -->
       <div class="content-block" id="portfolio">
         <div class="container portfolio-sec">
           <header class="block-heading cleafix">
@@ -55,21 +44,65 @@
             <div class="row">
               <% @issue_regions.each do |region| %>
                 <div class="col-sm-4 sc_block">
-                  <div class="recent-work">
-                    <%= link_to issue_index_path(region: region) do %>
-                      <% if region == 'all' %>
-                        <span class="btn btn-o-white">全国</span>
-                      <% else %>
-                        <span class="btn btn-o-white"><%= region %></span>
-                      <% end %>
-                    <% end %>
-                  </div>
+                  <%= link_to issue_index_path(region: region) do %>
+                    <div class="recent-work">
+                      <div class="recent-work-inner">
+                        <% if region == 'all' %>
+                          <div class="recent-work-badge">全国</div>
+                        <% else %>
+                          <div class="recent-work-badge"><%= region %></div>
+                        <% end %>
+                      </div>
+                    </div>
+                  <% end %>
                 </div>
               <% end %>
             </div>
           </section>
         </div>
       </div>
+      <!-- Location -->
+
+      <!-- Genre -->
+      <div class="content-block" id="portfolio">
+        <div class="container portfolio-sec">
+          <header class="block-heading cleafix">
+            <%= link_to issue_index_path, class: "btn btn-o btn-lg pull-right" do %>
+              View All
+            <% end %>
+            <div class="title-page">
+              <p class="main-header">Genre </p>
+                <p class="sub-header">種類から探す</p>
+              </div>
+          </header>
+          <section class="block-body">
+            <div class="row">
+                <div class="col-sm-4 sc_block">
+                    <div class="recent-work">
+                      <div class="recent-work-inner">
+                          <div class="recent-work-badge">給付型</div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 sc_block">
+                    <div class="recent-work">
+                      <div class="recent-work-inner">
+                          <div class="recent-work-badge">貸与型</div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 sc_block">
+                    <div class="recent-work">
+                      <div class="recent-work-inner">
+                          <div class="recent-work-badge">減免型</div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <!-- Genre -->
 
       <!-- About us -->
           <div id="about" class="about-us">
