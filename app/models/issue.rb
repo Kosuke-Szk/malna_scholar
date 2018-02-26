@@ -18,7 +18,15 @@ class Issue < ApplicationRecord
 
   def self.search_by_region(region)
     if region
-      Issue.where(['region = ?', "#{region}"])
+      Issue.where(['region LIKE ?', "%#{region}%"])
+    else
+      Issue.all
+    end
+  end
+
+  def self.search_by_loan(loan_or_pay, rate)
+    if loan_or_pay
+      Issue.where(['loan_or_pay LIKE ? AND rate LIKE ?', "%#{loan_or_pay}%", "%#{rate}%"])
     else
       Issue.all
     end

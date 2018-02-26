@@ -79,25 +79,31 @@
           <section class="block-body">
             <div class="row">
                 <div class="col-sm-4 sc_block">
+                  <%= link_to issue_index_path(loan_or_pay: '給付', rate: 'なし') do %>
                     <div class="recent-work">
                       <div class="recent-work-inner">
                           <div class="recent-work-badge">給付型</div>
                       </div>
                     </div>
+                  <% end %>
                 </div>
                 <div class="col-sm-4 sc_block">
+                  <%= link_to issue_index_path(loan_or_pay: '貸与', rate: '無利子') do %>
                     <div class="recent-work">
                       <div class="recent-work-inner">
-                          <div class="recent-work-badge">貸与型</div>
+                          <div class="recent-work-badge">貸与型(無利子)</div>
                       </div>
                     </div>
+                  <% end %>
                 </div>
                 <div class="col-sm-4 sc_block">
+                  <%= link_to issue_index_path(loan_or_pay: '貸与', rate: '有利子') do %>
                     <div class="recent-work">
                       <div class="recent-work-inner">
-                          <div class="recent-work-badge">減免型</div>
+                          <div class="recent-work-badge">貸与型(有利子)</div>
                       </div>
                     </div>
+                  <% end %>
                 </div>
             </div>
           </section>
