@@ -80,7 +80,7 @@
             <div class="row">
                 <div class="col-sm-4 sc_block">
                   <%= link_to issue_index_path(loan_or_pay: '給付', rate: 'なし') do %>
-                    <div class="recent-work">
+                    <div class="recent-work" id="give">
                       <div class="recent-work-inner">
                           <div class="recent-work-badge">給付型</div>
                       </div>
@@ -89,7 +89,7 @@
                 </div>
                 <div class="col-sm-4 sc_block">
                   <%= link_to issue_index_path(loan_or_pay: '貸与', rate: '無利子') do %>
-                    <div class="recent-work">
+                    <div class="recent-work" id="interest-bearing">
                       <div class="recent-work-inner">
                           <div class="recent-work-badge">貸与型(無利子)</div>
                       </div>
@@ -98,7 +98,7 @@
                 </div>
                 <div class="col-sm-4 sc_block">
                   <%= link_to issue_index_path(loan_or_pay: '貸与', rate: '有利子') do %>
-                    <div class="recent-work">
+                    <div class="recent-work" id="interest-free">
                       <div class="recent-work-inner">
                           <div class="recent-work-badge">貸与型(有利子)</div>
                       </div>
@@ -208,20 +208,29 @@
 
 
     <script type="text/javascript">
-      $("#all").css("background-image", "url('/bl_bg_all.jpg')");
-      $("#all").css("background-size", "cover");
-      $("#関東甲信越").css("background-image", "url('/bl_bg_tokyo.jpg')");
-      $("#関東甲信越").css("background-size", "cover");
+      $("#全国").css("background-image", "url('/bl_bg_all.jpg')");
+      $("#全国").css("background-size", "cover");
+      $("#関東").css("background-image", "url('/bl_bg_tokyo.jpg')");
+      $("#関東").css("background-size", "cover");
       $("#関西").css("background-image", "url('/bl_bg_osaka.jpg')");
       $("#関西").css("background-size", "cover");
       $("#中部").css("background-image", "url('/bl_bg_nagoya.jpg')");
       $("#中部").css("background-size", "cover");
-      $("#北海道東北").css("background-image", "url('/bl_bg_sapporo.jpg')");
-      $("#北海道東北").css("background-size", "cover");
+      $("#北海道").css("background-image", "url('/bl_bg_sapporo.jpg')");
+      $("#北海道").css("background-size", "cover");
+      $("#東北").css("background-image", "url('/bl_bg_sendai.jpg')");
+      $("#東北").css("background-size", "cover");
       $("#北陸").css("background-image", "url('/bl_bg_kanazawa.jpg')");
       $("#北陸").css("background-size", "cover");
       $("#中国・山陰・九州").css("background-image", "url('/bl_bg_hiroshima.jpg')");
       $("#中国・山陰・九州").css("background-size", "cover");
+
+      $("#give").css("background-image", "url('/bl_bg_give.jpg')");
+      $("#give").css("background-size", "cover");
+      $("#interest-bearing").css("background-image", "url('/bl_bg_bearing.jpg')");
+      $("#interest-bearing").css("background-size", "cover");
+      $("#interest-free").css("background-image", "url('/bl_bg_free.jpg')");
+      $("#interest-free").css("background-size", "cover");
     </script>
 
 

@@ -21,7 +21,7 @@
           <%= link_to issue_path(issue) , class: "sc-block-wrapper", style: "background-color:white;" do%>
             <div class="sc-block-inner">
               <div class="sc-block-header">
-                <div class="block-badge">貸与型</div>
+                <div class="block-badge"><%= issue.loan_or_pay %></div>
                 <div class="block-icons">
                   <i class="fa fa-comment-o"> <%= issue.comments.count %></i>
 <!--                   <i class="fa fa-heart-o"> 0</i>
@@ -35,12 +35,12 @@
                   <td class="sc-block-right"><%= issue.payment %></td>
                 </tr>
                 <tr class="border-tr">
-                  <td class="sc-table-left">期間</td>
-                  <td class="sc-block-right">#年間</td>
+                  <td class="sc-table-left">利率</td>
+                  <td class="sc-block-right"><%= issue.rate %></td>
                 </tr>
                 <tr>
-                  <td class="sc-table-left">対象</td>
-                  <td class="sc-block-right"></td>
+                  <td class="sc-table-left">要件</td>
+                  <td class="sc-block-right"><%= issue.description %></td>
                 </tr>
               </table>
             </div>
