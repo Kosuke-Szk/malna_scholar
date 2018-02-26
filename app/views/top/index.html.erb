@@ -12,7 +12,7 @@
               <header class="block-heading cleafix">
           <div class="title-page">
             <p class="main-header">Search</p>
-              <p class="sub-header">まずは好きな条件で検索してみてね
+              <p class="sub-header">好きな条件で検索してみる
               </p>
           </div>
         </header>
@@ -20,7 +20,8 @@
             <div class="text-center aboutus-item">
               <%= form_tag issue_index_path, :method => 'get' do %>
                 <p align="center">
-                  <%= text_field_tag :search, params[:search],class: 'form-control', style: 'width: 400px;'%>
+                  <i class="fa fa-search" style="font-size: 26px;"></i>
+                  <%= text_field_tag :search, params[:search],class: 'form-control', style: 'width: 400px;display: inline;'%>
                   <%= submit_tag "Search", :name => nil , class: "btn btn-o", style: 'margin: 10px;'%>
                 </p>
               <% end %>
@@ -105,13 +106,11 @@
       <!-- Genre -->
 
       <!-- About us -->
-          <div id="about" class="about-us">
+<!--           <div id="about" class="about-us">
               <div class="container about-sec">
                   <header class="block-heading cleafix">
               <div class="title-page">
                 <p class="main-header">About us</p>
-<!--                   <p class="sub-header">
-                  </p> -->
               </div>
             </header>
                   <div class="divide50"></div>
@@ -139,14 +138,18 @@
                       </div>
                   </div>
               </div>
-          </div>
+          </div> -->
 
       <div class="content-block" id="footer">
         <div class="container">
           <div class="row">
               <div class="col-sm-6 blog-post">
-                <h2 class="footer-block">Contact Form</h2>
-                <form action="contact-form.php" id="contactForm" method="post" name="contactform" class="" role="form">
+                <h2 class="footer-block">About Contact</h2>
+                <div>
+                  現在、ご利用くださる皆様のフィードバックを元に改善を進めています。 <br>
+                  どんなささいなことでも結構ですので、ご意見、ご質問いただけると幸いです。 <br>
+                </div>
+ <!--                <form action="contact-form.php" id="contactForm" method="post" name="contactform" class="" role="form">
                   <div class="form-group">
                       <input type="text" class="form-control form-control-white" id="name" name="name" placeholder="お名前" required>
                     </div>
@@ -160,7 +163,7 @@
                     <div class="form-group">
                       <input id="cfsubmit" type="submit" class="text-center btn btn-o-white" value="送信する">
                     </div>
-                </form>
+                </form> -->
               </div>
               <div class="col-sm-6 blog-post">
                 
@@ -175,12 +178,12 @@
 
                 </ul>
                 <div class="social">
-                  <a href="#"><i class="fa fa-twitter"></i></a>
-                  <a href="#"><i class="fa fa-facebook"></i></a>
-                  <a href="#"><i class="fa fa-instagram"></i></a>
-                  <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                  <a href="#"><i class="fa fa-google-plus"></i></a>
-                  <a href="#"><i class="fa fa-skype"></i></a>
+                  <a href="https://twitter.com/Ksk_Szk8424"><i class="fa fa-twitter"></i></a>
+                  <a href="https://www.facebook.com/brave.ksk"><i class="fa fa-facebook"></i></a>
+                  <!-- <a href="#"><i class="fa fa-instagram"></i></a> -->
+                  <!-- <a href="#"><i class="fa fa-pinterest-p"></i></a> -->
+                  <!-- <a href="#"><i class="fa fa-google-plus"></i></a> -->
+                  <!-- <a href="#"><i class="fa fa-skype"></i></a> -->
                 </div>
                 
               </div>
@@ -200,12 +203,19 @@
 
     <script type="text/javascript">
       $("#all").css("background-image", "url('/bl_bg_all.jpg')");
+      $("#all").css("background-size", "cover");
       $("#関東甲信越").css("background-image", "url('/bl_bg_tokyo.jpg')");
+      $("#関東甲信越").css("background-size", "cover");
       $("#関西").css("background-image", "url('/bl_bg_osaka.jpg')");
+      $("#関西").css("background-size", "cover");
       $("#中部").css("background-image", "url('/bl_bg_nagoya.jpg')");
+      $("#中部").css("background-size", "cover");
       $("#北海道東北").css("background-image", "url('/bl_bg_sapporo.jpg')");
+      $("#北海道東北").css("background-size", "cover");
       $("#北陸").css("background-image", "url('/bl_bg_kanazawa.jpg')");
+      $("#北陸").css("background-size", "cover");
       $("#中国・山陰・九州").css("background-image", "url('/bl_bg_hiroshima.jpg')");
+      $("#中国・山陰・九州").css("background-size", "cover");
     </script>
 
 

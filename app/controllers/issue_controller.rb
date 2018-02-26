@@ -56,7 +56,7 @@ class IssueController < ApplicationController
     max_col = ws.num_cols
     Issue.destroy_all
     (2..max_row).each do |row|
-      Issue.create(title: ws[row, 1], url:ws[row, 2], description:ws[row, 3], target:ws[row, 4], rate:ws[row, 5], payment:ws[row, 6], region:ws[row, 11], domain:ws[row, 12])
+      Issue.create(title: ws[row, 1], url:ws[row, 2], description:ws[row, 3], loan_or_pay:ws[row, 4], number_of_people:ws[row, 5], requirement:ws[row, 6], region:ws[row, 7], rate:ws[row, 8], payment:ws[row, 9], joint_application:ws[row, 10], combined_use:ws[row, 11])
     end
     redirect_to root_path
   end

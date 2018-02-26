@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180220091339) do
+ActiveRecord::Schema.define(version: 20180226123411) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "writer", null: false
@@ -25,13 +25,16 @@ ActiveRecord::Schema.define(version: 20180220091339) do
     t.string "title"
     t.string "url"
     t.text "description"
-    t.string "target"
-    t.float "rate", limit: 24
-    t.integer "payment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "region"
-    t.string "domain"
+    t.text "requirement"
+    t.string "loan_or_pay"
+    t.string "number_of_people"
+    t.string "joint_application"
+    t.string "combined_use"
+    t.string "rate"
+    t.string "payment"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

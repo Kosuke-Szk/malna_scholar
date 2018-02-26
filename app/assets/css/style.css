@@ -147,7 +147,7 @@ li{
     
 
 header.top-header {
-  position: fixed;
+  /*position: fixed;*/
   z-index: 999;
   width: 100%;
 }
@@ -785,4 +785,7 @@ button.navbar-toggle.collapsed {
 
 #test01 {
   background-image: url(<%= asset_path('bl_bg_osaka.jpg') %>)
+}
+.issue-row {
+  width: 100px;
 }

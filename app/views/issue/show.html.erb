@@ -12,36 +12,48 @@
     <table class="table">
       <tbody>
         <tr>
-          <th scope="row">名前</th>
+          <th scope="row" class="issue-row">名前</th>
           <td><%= @issue.title %></td>
         </tr>
         <tr>
-          <th scope="row">リンク</th>
+          <th scope="row" class="issue-row">区分</th>
+          <td><%= @issue.loan_or_pay %></td>
+        </tr>
+        <tr>
+          <th scope="row" class="issue-row">募集人数</th>
+          <td><%= @issue.number_of_people %></td>
+        </tr>
+        <tr>
+          <th scope="row" class="issue-row">地域</th>
+          <td><%= @issue.region %></td>
+        </tr>
+        <tr>
+          <th scope="row" class="issue-row">リンク</th>
           <td><%= link_to "公式ページ", @issue.url, :target=>["_blank"] %></td>
         </tr>
         <tr>
-          <th scope="row">説明</th>
+          <th scope="row" class="issue-row">説明</th>
           <td><%= @issue.description %></td>
         </tr>
         <tr>
-          <th scope="row">対象</th>
-          <td><%= @issue.target %></td>
-        </tr>
-        <tr>
-          <th scope="row">利率</th>
+          <th scope="row" class="issue-row">利率</th>
           <td><%= @issue.rate %> % </td>
         </tr>
         <tr>
-          <th scope="row">月支払額</th>
-          <td> ¥ <%= @issue.payment %></td>
+          <th scope="row" class="issue-row">月支払額</th>
+          <td><%= @issue.payment %></td>
         </tr>
         <tr>
-          <th scope="row">地域</th>
-          <td><% if @issue.region=="all" %>全国<% else %><%= @issue.region %><% end %></td>
+          <th scope="row" class="issue-row">応募要件</th>
+          <td><%= @issue.requirement %></td>
         </tr>
         <tr>
-          <th scope="row">領域</th>
-          <td><% if @issue.domain=="all" %>不問<% else %><%= @issue.domain %><% end %></td>
+          <th scope="row" class="issue-row">併願</th>
+          <td><%= @issue.joint_application %></td>
+        </tr>
+        <tr>
+          <th scope="row" class="issue-row">併用</th>
+          <td><%= @issue.combined_use %></td>
         </tr>
       </tbody>
     </table>
