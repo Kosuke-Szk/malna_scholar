@@ -9,7 +9,7 @@
     <%= form_tag issue_index_path, :method => 'get' do %>
       <p align="center">
         <i class="fa fa-search" style="font-size: 26px;"></i>  
-        <%= text_field_tag :search, params[:search],class: 'form-control', style: 'width: 400px;display: inline;'%>
+        <%= text_field_tag :search, params[:search],placeholder: '理系、女性、高等専門学校 ...',class: 'form-control', style: 'width: 400px;display: inline;'%>
         <%= submit_tag "Search", :name => nil , class: "btn btn-o", style: 'margin: 10px;'%>
       </p>
     <% end %>
@@ -32,15 +32,15 @@
               <table class="sc-block-table">
                 <tr class="border-tr">
                   <td class="sc-table-left">支給額</td>
-                  <td class="sc-block-right"><%= issue.payment %></td>
+                  <td class="sc-block-right"><%= issue.payment.truncate(40) %></td>
                 </tr>
                 <tr class="border-tr">
                   <td class="sc-table-left">利率</td>
-                  <td class="sc-block-right"><%= issue.rate %></td>
+                  <td class="sc-block-right"><%= issue.rate.truncate(40) %></td>
                 </tr>
                 <tr>
                   <td class="sc-table-left">要件</td>
-                  <td class="sc-block-right"><%= issue.description %></td>
+                  <td class="sc-block-right"><%= issue.description.truncate(54) %></td>
                 </tr>
               </table>
             </div>
