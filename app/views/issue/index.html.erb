@@ -7,10 +7,10 @@
         </div>
 
     <%= form_tag issue_index_path, :method => 'get' do %>
-      <p>
-        <span>名前で検索</span>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search", :name => nil %>
+      <p align="center">
+        <i class="fa fa-search" style="font-size: 26px;"></i>  
+        <%= text_field_tag :search, params[:search],class: 'form-control', style: 'width: 400px;display: inline;'%>
+        <%= submit_tag "Search", :name => nil , class: "btn btn-o", style: 'margin: 10px;'%>
       </p>
     <% end %>
     </header>
@@ -24,8 +24,8 @@
                 <div class="block-badge">貸与型</div>
                 <div class="block-icons">
                   <i class="fa fa-comment-o"> <%= issue.comments.count %></i>
-                  <i class="fa fa-heart-o"> 0</i>
-                  <i class="fa fa-star-o"> 0</i>
+<!--                   <i class="fa fa-heart-o"> 0</i>
+                  <i class="fa fa-star-o"> 0</i> -->
                 </div>
                 <div class="sc-block-name"><%= issue.title %></div>
               </div>

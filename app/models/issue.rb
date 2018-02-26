@@ -8,6 +8,14 @@ class Issue < ApplicationRecord
     end
   end
 
+  def self.search_from_all(keyword)
+    if keyword
+      Issue.where(['title LIKE ? OR description LIKE ?', "%#{keyword}%", "%#{keyword}%"])
+    else
+      Issue.all
+    end
+  end
+
   def self.search_by_region(region)
     if region
       Issue.where(['region = ?', "#{region}"])

@@ -45,7 +45,7 @@
               <% @issue_regions.each do |region| %>
                 <div class="col-sm-4 sc_block">
                   <%= link_to issue_index_path(region: region) do %>
-                    <div class="recent-work">
+                    <div class="recent-work" id="<%= region %>" >
                       <div class="recent-work-inner">
                         <% if region == 'all' %>
                           <div class="recent-work-badge">全国</div>
@@ -140,77 +140,10 @@
                   </div>
               </div>
           </div>
-          <!-- /About us -->
-
-<!--       <div class="content-block parallax" id="services">
-        <div class="container services-sec">
-          <div class="title-page">
-            <p class="main-header">Search from Map </p>
-              <p class="sub-header">地図から奨学金を探す  </p>
-          </div>
-          <section class="block-body">
-            <div class="row">
-              <div class="col-md-4">
-                <div class="service">
-                  <div class="bar">
-                    <i class="fa fa-send-o"></i>
-                  </div>
-                  <h2 class="service-head">Illustration</h2>
-                  <p>In at accumsan risus. Nam id volutpat ante. Etiam vel mi mattis, vulputate nunc nec, sodales nibh. Etiam nulla magna, gravida eget ultricies sit amet, hendrerit in lorem.</p>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="service">
-                  <div class="bar">
-                    <i class="fa fa-heart-o"></i>
-                  </div>  
-                  <h2 class="service-head">3D Modeling</h2>
-                  <p>In at accumsan risus. Nam id volutpat ante. Etiam vel mi mattis, vulputate nunc nec, sodales nibh. Etiam nulla magna, gravida eget ultricies sit amet, hendrerit in lorem.</p>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="service">
-                  <div class="bar">
-                    <i class="fa fa-camera-retro"></i>
-                  </div>  
-                  <h2 class="service-head">Photography</h2>
-                  <p>In at accumsan risus. Nam id volutpat ante. Etiam vel mi mattis, vulputate nunc nec, sodales nibh. Etiam nulla magna, gravida eget ultricies sit amet, hendrerit in lorem.</p>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>#services -->
-
-
-<!--       <div class="content-block" id="blog">
-        <div class="container blog-sec">
-          <header class="block-heading cleafix">
-            <a href="#" class="btn btn-o btn-lg pull-right">View All</a>
-            <div class="title-page">
-              <p class="main-header">From the Blog</p>
-                <p class="sub-header">Keep up with the latest happenings.</p>
-            </div>
-          </header>
-          <section class="block-body">
-          </section>
-        </div>
-      </div>-->
-
 
       <div class="content-block" id="footer">
         <div class="container">
           <div class="row">
-<!--               <div class="col-sm-4 blog-post">
-                
-                <h2 class="footer-block">Have a question</h2>
-                <p>Praesent lacinia dapibus, accumsan vesti bulum. Pellen tesque molestie mollis.</p>
-
-                <p>Mauris nec ligula dui, fermentum nisl ut magna dolor, rhoncus wisi. In lacus sagittis luctus, nisl eros, sit amet tempor et, accumsan eget, pede. Suspendisse est. Ut rhoncus eu, pede. Vestibulum ante ipsum dolor lorem, iaculis mi. Pellentesque eu urna eget dolor. Duis luctus a, dolor. Duis ac sapien. 
-                </p>
-
-                <p>Estibulum dapibus, maurimalesfames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum. Integer aliquam purus ultricies gravida vitae...</p>
-              </div> -->
               <div class="col-sm-6 blog-post">
                 <h2 class="footer-block">Contact Form</h2>
                 <form action="contact-form.php" id="contactForm" method="post" name="contactform" class="" role="form">
@@ -266,34 +199,13 @@
 
 
     <script type="text/javascript">
-    jQuery(document).ready(function($){
-
-        $(window).scroll(function() {
-          
-          console.log("asdf");
-
-        if ($(window).scrollTop() > 100 ){
-        
-        $('.top-header').addClass('shows');
-        
-          } else {
-        
-          $('.top-header').removeClass('shows');
-        
-        };    
-      });
-
-      });
-
-    jQuery('.scroll').on('click', function(e){    
-        e.preventDefault()
-        
-      jQuery('html, body').animate({
-          scrollTop : jQuery(this.hash).offset().top
-        }, 1500);
-    });
-
-
+      $("#all").css("background-image", "url('/bl_bg_all.jpg')");
+      $("#関東甲信越").css("background-image", "url('/bl_bg_tokyo.jpg')");
+      $("#関西").css("background-image", "url('/bl_bg_osaka.jpg')");
+      $("#中部").css("background-image", "url('/bl_bg_nagoya.jpg')");
+      $("#北海道東北").css("background-image", "url('/bl_bg_sapporo.jpg')");
+      $("#北陸").css("background-image", "url('/bl_bg_kanazawa.jpg')");
+      $("#中国・山陰・九州").css("background-image", "url('/bl_bg_hiroshima.jpg')");
     </script>
 
 

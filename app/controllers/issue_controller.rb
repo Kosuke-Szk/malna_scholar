@@ -7,7 +7,7 @@ class IssueController < ApplicationController
   PER = 9
 
   def index
-    @issues = Issue.search(params[:search]).search_by_region(params[:region]).page(params[:page]).per(PER)
+    @issues = Issue.search_from_all(params[:search]).search_by_region(params[:region]).page(params[:page]).per(PER)
   end
 
   def new

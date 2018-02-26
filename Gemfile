@@ -73,3 +73,5 @@ group :development do
   gem 'capistrano3-puma',   require: false
   gem 'capistrano-rbenv',   require: false
 end
+
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
