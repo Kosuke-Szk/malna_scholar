@@ -66,24 +66,15 @@
   <div>
     <p class="main-header">Comment </p>
 
-    <%= form_for(@comment, url: comment_index_path) do  |f| %>
-      <%= f.label :writer %>
-      <%= f.text_field :writer, class: 'form-control' %>
-      <br>
-      <%= f.label :content %>
-      <%= f.text_field :content, class: 'form-control' %>
-      <br>
-      <%= f.hidden_field :issue_id, value: @issue.id, class: 'form-control' %>
-      <br>
-      <%= f.submit 'Send', class: 'btn btn-primary btn-block' %>
-    <% end %>
+    <%= link_to 'Comment', new_comment_path(issue_id: @issue.id), remote: true, class: "btn btn-lg btn-primary"  %>
+    <div id="comment-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="false" style="z-index: 1500"></div>
 
     <% @comments.each do |comment| %>
       <div align="center">
         <table class="table">
           <tbody>
             <tr>
-              <th scope="row">コメント者</th>
+              <th scope="row">コメンター</th>
               <td><%= comment.writer %></td>
             </tr>
             <tr>

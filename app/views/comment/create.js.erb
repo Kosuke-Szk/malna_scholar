@@ -1,0 +1,6 @@
+<% if @status == 'success' %>
+$("tbody").append("<%= j(render("tr", comment: @comment)) %>");
+<%  elsif @status == 'fail' %>
+alert('error!');
+<% end %>
+$("#comment-modal").modal("hide");
