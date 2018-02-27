@@ -347,12 +347,10 @@ h1.logo {
 
 .recent-work {
     width: 100%;
-    padding-bottom: 27%;
     background: #C3C9CC;
     display: table;
     text-align: center;
     vertical-align: middle;
-    padding-top: 27%;
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
