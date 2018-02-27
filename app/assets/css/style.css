@@ -783,9 +783,6 @@ button.navbar-toggle.collapsed {
   font-size: 18px;
 }
 
-#test01 {
-  background-image: url(<%= asset_path('bl_bg_osaka.jpg') %>)
-}
 .issue-row {
   width: 100px;
 }
