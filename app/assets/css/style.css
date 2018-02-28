@@ -773,3 +773,11 @@ button.navbar-toggle.collapsed {
 .issue-table {
   max-width: 900px;
 }
+.issue-wrapper {
+ padding: 0px 150px;
+}
+@media (max-width: 767px){
+  .issue-wrapper {
+    padding: 0px 0px;
+  }
+}
