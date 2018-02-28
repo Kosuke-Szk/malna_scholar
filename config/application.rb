@@ -17,5 +17,6 @@ module ScholarshipNavi
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.paths.add 'lib', eager_load: true
+    config.active_record.default_timezone = :local
   end
 end
