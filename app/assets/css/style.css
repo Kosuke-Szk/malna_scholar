@@ -156,8 +156,6 @@ header.top-header {
  transition: all .6s;
 }
 .shows .navbar-default {
-  /* background-color: #f8f8f8; */
-  /* border-color: #e7e7e7; */
   margin-bottom: 10px;
   transition: all .6s;
 }
@@ -175,6 +173,14 @@ h1.logo {
   margin-top: 11px;
   color: #6a6a6a;
   display: inline-flex;
+}
+@media(max-width: 700px) {
+h1.logo {
+  margin-top: 0px;
+  color: #6a6a6a;
+  display: inline-flex;
+  font-size: 30px;
+}
 }
 #header{  
   position: relative;     
@@ -764,4 +770,7 @@ button.navbar-toggle.collapsed {
 
 .issue-row {
   width: 100px;
+}
+.issue-table {
+  max-width: 900px;
 }

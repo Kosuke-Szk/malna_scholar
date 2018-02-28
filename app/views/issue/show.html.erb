@@ -1,90 +1,83 @@
 <div class="content-block" id="portfolio">
-  <div class="container portfolio-sec">
-    <header class="block-heading cleafix">
-      <div class="title-page">
-        <p class="main-header">Scholarship </p>
-          <p class="sub-header">奨学金 <%= @issue.title %></p>
-      </div>
-    </header>
 
-    
-  <div align="center">
-    <table class="table">
-      <tbody>
-        <tr>
-          <th scope="row" class="issue-row">名前</th>
-          <td><%= @issue.title %></td>
-        </tr>
-        <tr>
-          <th scope="row" class="issue-row">区分</th>
-          <td><%= @issue.loan_or_pay %></td>
-        </tr>
-        <tr>
-          <th scope="row" class="issue-row">募集人数</th>
-          <td><%= @issue.number_of_people %></td>
-        </tr>
-        <tr>
-          <th scope="row" class="issue-row">地域</th>
-          <td><%= @issue.region %></td>
-        </tr>
-        <tr>
-          <th scope="row" class="issue-row">リンク</th>
-          <td><%= link_to "公式ページ", @issue.url, :target=>["_blank"] %></td>
-        </tr>
-        <tr>
-          <th scope="row" class="issue-row">説明</th>
-          <td><%= @issue.description %></td>
-        </tr>
-        <tr>
-          <th scope="row" class="issue-row">利率</th>
-          <td><%= @issue.rate %></td>
-        </tr>
-        <tr>
-          <th scope="row" class="issue-row">月支払額</th>
-          <td><%= @issue.payment %></td>
-        </tr>
-        <tr>
-          <th scope="row" class="issue-row">応募要件</th>
-          <td><%= @issue.requirement %></td>
-        </tr>
-        <tr>
-          <th scope="row" class="issue-row">併願</th>
-          <td><%= @issue.joint_application %></td>
-        </tr>
-        <tr>
-          <th scope="row" class="issue-row">併用</th>
-          <td><%= @issue.combined_use %></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <% if user_signed_in? %>
-  <%= link_to 'Edit', edit_issue_path, class: 'btn btn-primary btn-block' %>
-  <%= link_to 'Delete', issue_path(@issue), data: { confirm: "本当に削除しますか?" }, method: :delete, class: 'btn btn-danger btn-block' %>
-  <% end %>
+  
 
-  <div>
-    <p class="main-header">Comment </p>
+    <div class="container portfolio-sec">
+      <div class="issue-wrapper" style="padding: 0px 150px;">
+      <header class="block-heading cleafix">
+        <div class="title-page15
+          <p class="main-header"></p>
+            <p class="sub-header"><%= @issue.title %></p>
+        </div>
+      </header>
 
-    <%= link_to 'Comment', new_comment_path(issue_id: @issue.id), remote: true, class: "btn btn-lg btn-primary"  %>
-    <div id="comment-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="false" style="z-index: 1500"></div>
-
-    <% @comments.each do |comment| %>
-      <div align="center">
-        <table class="table">
-          <tbody>
-            <tr>
-              <th scope="row">コメンター</th>
-              <td><%= comment.writer %></td>
-            </tr>
-            <tr>
-              <th scope="row">テキスト</th>
-              <td><%= comment.content %></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      
+    <div align="center">
+      <table class="table issue-table">
+        <tbody>
+          <tr>
+            <th scope="row" class="issue-row">区分</th>
+            <td class="issue-td"><%= @issue.loan_or_pay %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="issue-row">募集人数</th>
+            <td class="issue-td"><%= @issue.number_of_people %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="issue-row">地域</th>
+            <td class="issue-td"><%= @issue.region %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="issue-row">リンク</th>
+            <td class="issue-td"><%= link_to "公式ページ", @issue.url, :target=>["_blank"] %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="issue-row">説明</th>
+            <td class="issue-td"><%= @issue.description %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="issue-row">利率</th>
+            <td class="issue-td"><%= @issue.rate %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="issue-row">月支払額</th>
+            <td class="issue-td"><%= @issue.payment %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="issue-row">応募要件</th>
+            <td class="issue-td"><%= @issue.requirement %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="issue-row">併願</th>
+            <td class="issue-td"><%= @issue.joint_application %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="issue-row">併用</th>
+            <td class="issue-td"><%= @issue.combined_use %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_issue_path, class: 'btn btn-primary btn-block' %>
+    <%= link_to 'Delete', issue_path(@issue), data: { confirm: "本当に削除しますか?" }, method: :delete, class: 'btn btn-danger btn-block' %>
     <% end %>
+
+    <div class="comment-wrapper" style="margin-left: 40px;margin-top: 30px;">
+      <p class="main-header">Comment </p>
+
+      <%= link_to 'コメントを書く', new_comment_path(issue_id: @issue.id), remote: true, class: "btn btn-lg btn-primary", style: 'margin-bottom: 20px;'%>
+      <div id="comment-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="false" style="z-index: 1500"></div>
+
+      <% @comments.each do |comment| %>
+        <div class="comment-block" style="padding: 20px 20px; border-top: solid 1px;border-color: #caccd1">
+          <div style="font-size: 16px;"><%= comment.writer %></div>
+          <div class="text-muted"><%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分") %></div>
+          <div><%= comment.content %></div>
+        </div>
+      <% end %>
+    </div>
   </div>
 
+  </div>
 </div>

@@ -9,7 +9,7 @@
     <%= form_tag issue_index_path, :method => 'get' do %>
       <p align="center">
         <i class="fa fa-search" style="font-size: 26px;"></i>  
-        <%= text_field_tag :search, params[:search],placeholder: '理系、女性、高等専門学校 ...',class: 'form-control', style: 'width: 400px;display: inline;'%>
+        <%= text_field_tag :search, params[:search],placeholder: '理系、女性、高等専門学校 ...',class: 'form-control', style: 'width: 350px;display: inline;'%>
         <%= submit_tag "Search", :name => nil , class: "btn btn-o", style: 'margin: 10px;'%>
       </p>
     <% end %>

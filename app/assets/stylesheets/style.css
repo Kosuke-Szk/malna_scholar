@@ -152,8 +152,6 @@ header.top-header {
  transition: all .6s;
 }
 .shows .navbar-default {
-  /* background-color: #f8f8f8; */
-  /* border-color: #e7e7e7; */
   margin-bottom: 10px;
   transition: all .6s;
 }
