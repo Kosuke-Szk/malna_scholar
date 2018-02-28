@@ -7,27 +7,23 @@
   
   <body>
     <div id="wrapper">
-      <div id="about" class="about-us">
-          <div class="container about-sec">
-              <header class="block-heading cleafix">
-          <div class="title-page">
-            <p class="main-header">Search</p>
-              <p class="sub-header">好きな条件で検索してみる
+      <div class="container about-sec">
+        <div class="title-page">
+          <p class="main-header">Search</p>
+            <p class="sub-header">好きな条件で検索してみる
+          </p>
+        </div>
+        <div>
+          <div class="text-center aboutus-item">
+            <%= form_tag issue_index_path, :method => 'get' do %>
+              <p align="center">
+                <i class="fa fa-search" style="font-size: 26px;"></i>
+                <%= text_field_tag :search, params[:search],:placeholder => "理系、女性、高等専門学校 ...", class: 'form-control', style: 'width: 300px;display: inline;'%>
+                <%= submit_tag "Search", :name => nil , class: "btn btn-o", style: 'margin: 10px;'%>
               </p>
+            <% end %>
           </div>
-        </header>
-          <div>
-            <div class="text-center aboutus-item">
-              <%= form_tag issue_index_path, :method => 'get' do %>
-                <p align="center">
-                  <i class="fa fa-search" style="font-size: 26px;"></i>
-                  <%= text_field_tag :search, params[:search],:placeholder => "理系、女性、高等専門学校 ...", class: 'form-control', style: 'width: 300px;display: inline;'%>
-                  <%= submit_tag "Search", :name => nil , class: "btn btn-o", style: 'margin: 10px;'%>
-                </p>
-              <% end %>
-            </div>
-          </div>
-          </div>
+        </div>
       </div>
       <!-- Location  -->
       <div class="content-block" id="portfolio">
