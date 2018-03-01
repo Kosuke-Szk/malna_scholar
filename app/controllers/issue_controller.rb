@@ -19,6 +19,7 @@ class IssueController < ApplicationController
     @comment = Comment.new
 
     @comments = @issue.comments.all
+    binding.pry
   end
 
   def create
@@ -63,6 +64,6 @@ class IssueController < ApplicationController
 
   private
     def issue_params
-      params.require(:issue).permit(:title, :url, :description, :target, :rate, :payment).to_h
+      params.require(:issue).permit(:title, :url, :description, :target, :rate, :payment, :tag_list).to_h
     end
 end

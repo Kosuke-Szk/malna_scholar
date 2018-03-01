@@ -1,5 +1,6 @@
 class Issue < ApplicationRecord
   has_many :comments
+  acts_as_taggable
   def self.search(search)
     if search
       Issue.where(['title LIKE ?', "%#{search}%"])

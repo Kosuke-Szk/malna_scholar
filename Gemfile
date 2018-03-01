@@ -77,3 +77,4 @@ end
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'bootstrap-sass'
 gem 'google-analytics-rails'
+gem 'acts-as-taggable-on'

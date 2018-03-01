@@ -1,6 +1,7 @@
 <div class="content-block" id="portfolio">
-
-  
+    <% @issue.tag_list.each do |tag| %>
+      <span class="label label-primary"><%= tag %></span>
+    <% end %>
 
     <div class="container portfolio-sec">
       <div class="issue-wrapper">
@@ -10,7 +11,6 @@
             <p class="sub-header"><%= @issue.title %></p>
         </div>
       </header>
-
       
     <div align="center">
       <table class="table issue-table">
