@@ -21,6 +21,14 @@
                 <%= text_field_tag :search, params[:search],:placeholder => "理系、女性、高等専門学校 ...", class: 'form-control', style: 'width: 300px;display: inline;'%>
                 <%= submit_tag "Search", :name => nil , class: "btn btn-o", style: 'margin: 10px;'%>
               </p>
+              <% if !@tags.empty? %>
+                <p style="text-align: center;width: 600px;display: inline-block;">
+                  <span style="font-size: 20px;">よく検索されるワード</span><br><br>
+                  <% @tags.each do |tag| %>
+                    <span class="label label-primary"><%= link_to tag, tag_search_issue_index_path(tag.name), style: "color: white;" %></span>
+                  <% end %>
+                </p>
+              <% end %>
             <% end %>
           </div>
         </div>

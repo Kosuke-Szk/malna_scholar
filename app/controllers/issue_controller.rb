@@ -19,7 +19,6 @@ class IssueController < ApplicationController
     @comment = Comment.new
 
     @comments = @issue.comments.all
-    binding.pry
   end
 
   def create
@@ -50,6 +49,11 @@ class IssueController < ApplicationController
     end
   end
 
+  def tag_search
+    @issues = Issue.tagged_with(params[:format]).page(params[:page]).per(PER)
+    render template: "issue/index"
+  end
+
   def create_from_ws
     session = GoogleDrive::Session.from_config("config.json")
     ws = session.spreadsheet_by_key("10cgHCmhXFmVCMKGRv1tomRRykZpTz5koenF92Eu2LYY").worksheets[2]
@@ -57,7 +61,9 @@ class IssueController < ApplicationController
     max_col = ws.num_cols
     Issue.destroy_all
     (2..max_row).each do |row|
-      Issue.create(title: ws[row, 1], url:ws[row, 2], description:ws[row, 3], loan_or_pay:ws[row, 4], number_of_people:ws[row, 5], requirement:ws[row, 6], region:ws[row, 7], rate:ws[row, 8], payment:ws[row, 9], joint_application:ws[row, 10], combined_use:ws[row, 11])
+      issue = Issue.new(title: ws[row, 1], url:ws[row, 2], description:ws[row, 3], loan_or_pay:ws[row, 4], number_of_people:ws[row, 5], requirement:ws[row, 6], region:ws[row, 7], rate:ws[row, 8], payment:ws[row, 9], joint_application:ws[row, 10], combined_use:ws[row, 11])
+      # issue.tag_list = [ws[row, 12]]
+      # issue.save
     end
     redirect_to root_path
   end
