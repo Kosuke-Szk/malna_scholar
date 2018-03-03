@@ -22,7 +22,7 @@
                 <%= submit_tag "Search", :name => nil , class: "btn btn-o", style: 'margin: 10px;'%>
               </p>
               <% if !@tags.empty? %>
-                <p style="text-align: center;width: 600px;display: inline-block;">
+                <p style="text-align: center;width: 350px;display: inline-block;column-gap: inherit;list-style-position: initial;">
                   <span style="font-size: 20px;">よく検索されるワード</span><br><br>
                   <% @tags.each do |tag| %>
                     <span class="label label-primary"><%= link_to tag, tag_search_issue_index_path(tag.name), style: "color: white;" %></span>

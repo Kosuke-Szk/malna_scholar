@@ -767,7 +767,7 @@ button.navbar-toggle.collapsed {
 }
 
 .issue-row {
-  width: 100px;
+  width: 75px;
 }
 .issue-table {
   max-width: 900px;
@@ -779,4 +779,8 @@ button.navbar-toggle.collapsed {
   .issue-wrapper {
     padding: 0px 0px;
   }
+}
+
+.modal-wrapper {
+  padding: 10px;
 }

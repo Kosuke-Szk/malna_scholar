@@ -1,7 +1,7 @@
 <div class="modal-dialog">
-  <div class="modal-content">
+  <div class="modal-content modal-wrapper">
     <%= form_for(@comment, url: comment_index_path, remote: true) do  |f| %>
-      <label>コメンター</label>
+      <label>ペンネーム</label>
       <%= f.text_field :writer, class: 'form-control' %>
       <br>
       <label>コメント</label>
