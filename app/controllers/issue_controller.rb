@@ -16,6 +16,7 @@ class IssueController < ApplicationController
 
   def show
     @issue = Issue.find(params[:id])
+    IssueLog.createLog(params[:id])
     @comment = Comment.new
 
     @comments = @issue.comments.all
@@ -59,9 +60,10 @@ class IssueController < ApplicationController
     ws = session.spreadsheet_by_key("10cgHCmhXFmVCMKGRv1tomRRykZpTz5koenF92Eu2LYY").worksheets[2]
     max_row = ws.num_rows
     max_col = ws.num_cols
-    Issue.destroy_all
+    # Issue.destroy_all
+    ActiveRecord::Base.connection.execute("TRUNCATE TABLE issues;")
     (2..max_row).each do |row|
-      issue = Issue.new(title: ws[row, 1], url:ws[row, 2], description:ws[row, 3], loan_or_pay:ws[row, 4], number_of_people:ws[row, 5], requirement:ws[row, 6], region:ws[row, 7], rate:ws[row, 8], payment:ws[row, 9], joint_application:ws[row, 10], combined_use:ws[row, 11])
+      issue = Issue.create(title: ws[row, 1], url:ws[row, 2], description:ws[row, 3], loan_or_pay:ws[row, 4], number_of_people:ws[row, 5], requirement:ws[row, 6], region:ws[row, 7], rate:ws[row, 8], payment:ws[row, 9], joint_application:ws[row, 10], combined_use:ws[row, 11])
       # issue.tag_list = [ws[row, 12]]
       # issue.save
     end
