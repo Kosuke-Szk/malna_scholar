@@ -3,15 +3,42 @@ class Issue < ApplicationRecord
   acts_as_taggable
   def self.search(search)
     if search
-      Issue.where(['title LIKE ?', "%#{search}%"])
+      patterns = search.split(/[ ,　]/)
+      sql_body = ''
+      patterns.each do | pattern |
+        sql_body += ' and ' unless sql_body.blank?
+        sql_body += " title LIKE '%#{pattern}%' OR region LIKE '%#{pattern}%' OR description LIKE '%#{pattern}%' OR requirement LIKE '%#{pattern}%' "
+      end
+      sql = "select * from issues where #{sql_body} order by id desc"
+      memo_ids = Issue.find_by_sql(sql)
+      ids = []
+      memo_ids.each do |qi|
+        ids.push(qi.id)
+      end
+      where(:id => ids)
     else
       Issue.all
     end
   end
 
-  def self.search_from_all(keyword)
-    if keyword
-      Issue.where(['title LIKE ? OR description LIKE ?', "%#{keyword}%", "%#{keyword}%"])
+  def self.search_from_all(search)
+    if search == ''
+      Issue.all
+    elsif search
+      patterns = search.split(/[ ,　]/)
+      sql_body = ''
+      patterns.each do | pattern |
+        sql_body += ' and ' unless sql_body.blank?
+        sql_body += " (title LIKE '%#{pattern}%' OR region LIKE '%#{pattern}%' OR description LIKE '%#{pattern}%' OR requirement LIKE '%#{pattern}%') "
+      end
+      sql = "select * from issues where #{sql_body} order by id desc;"
+
+      memo_ids = Issue.find_by_sql(sql)
+      ids = []
+      memo_ids.each do |qi|
+        ids.push(qi.id)
+      end
+      where(:id => ids)
     else
       Issue.all
     end
