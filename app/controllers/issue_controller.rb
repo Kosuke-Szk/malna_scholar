@@ -65,10 +65,10 @@ class IssueController < ApplicationController
     issue_id = 240
     (2..max_row).each do |row|
       issue_id += 1
-      issue = Issue.new(title: ws[row, 1], url:ws[row, 2], description:ws[row, 3], loan_or_pay:ws[row, 4], number_of_people:ws[row, 5], requirement:ws[row, 6], region:ws[row, 7], rate:ws[row, 8], payment:ws[row, 9], joint_application:ws[row, 10], combined_use:ws[row, 11])
-      issue.id = issue_id
+      issue = Issue.create(id: issue_id, title: ws[row, 1], url:ws[row, 2], description:ws[row, 3], loan_or_pay:ws[row, 4], number_of_people:ws[row, 5], requirement:ws[row, 6], region:ws[row, 7], rate:ws[row, 8], payment:ws[row, 9], joint_application:ws[row, 10], combined_use:ws[row, 11])
+      # issue.id = issue_id
       # issue.tag_list = [ws[row, 12]]
-      issue.save!
+      # issue.save!
     end
     redirect_to root_path
   end
