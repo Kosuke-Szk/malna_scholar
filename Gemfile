@@ -75,6 +75,10 @@ group :development do
 end
 
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-gem 'bootstrap-sass'
+gem 'bootstrap'
 gem 'google-analytics-rails'
 gem 'acts-as-taggable-on'
+
+gem 'chart-js-rails'
+
+gem 'metainspector'

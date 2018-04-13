@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  issue: one
+  title: MyString
+  layer: MyString
+  layer_data: MyString
+  price: MyString
+  range: MyString
+  accept_number: MyString
+  get_duration: MyString
+  back_duration: MyString
+
+two:
+  issue: two
+  title: MyString
+  layer: MyString
+  layer_data: MyString
+  price: MyString
+  range: MyString
+  accept_number: MyString
+  get_duration: MyString
+  back_duration: MyString

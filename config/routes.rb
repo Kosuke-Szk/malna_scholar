@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     end
   end
   get 'insert_rows' => 'issue#create_from_ws'
+  get 'insert_layers' => 'issue#create_sc_layer_from_ws'
   resources :comment, only: [:create, :new, :edit]
   get 'issues' => 'issue#index'
 

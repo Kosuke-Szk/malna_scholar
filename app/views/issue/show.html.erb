@@ -1,82 +1,173 @@
-<div class="content-block" id="portfolio">
-    <div class="container portfolio-sec">
-      <div class="issue-wrapper">
-      <header class="block-heading cleafix">
-        <div class="title-page15">
-          <p class="main-header"></p>
-            <% @issue.tag_list.each do |tag| %>
-              <span class="label label-primary"><%= tag %></span>
-            <% end %>
-            <p class="sub-header"><%= @issue.title %></p>
-        </div>
-      </header>
-      
-    <div align="center">
-      <table class="table issue-table">
-        <tbody>
-          <tr>
-            <th scope="row" class="issue-row">区分</th>
-            <td class="issue-td"><%= @issue.loan_or_pay %></td>
-          </tr>
-          <tr>
-            <th scope="row" class="issue-row">募集人数</th>
-            <td class="issue-td"><%= @issue.number_of_people %></td>
-          </tr>
-          <tr>
-            <th scope="row" class="issue-row">地域</th>
-            <td class="issue-td"><%= @issue.region %></td>
-          </tr>
-          <tr>
-            <th scope="row" class="issue-row">リンク</th>
-            <td class="issue-td"><%= link_to "公式ページ", @issue.url, :target=>["_blank"] %></td>
-          </tr>
-          <tr>
-            <th scope="row" class="issue-row">説明</th>
-            <td class="issue-td"><%= @issue.description %></td>
-          </tr>
-          <tr>
-            <th scope="row" class="issue-row">利率</th>
-            <td class="issue-td"><%= @issue.rate %></td>
-          </tr>
-          <tr>
-            <th scope="row" class="issue-row">月支払額</th>
-            <td class="issue-td"><%= @issue.payment %></td>
-          </tr>
-          <tr>
-            <th scope="row" class="issue-row">応募要件</th>
-            <td class="issue-td"><%= @issue.requirement %></td>
-          </tr>
-          <tr>
-            <th scope="row" class="issue-row">併願</th>
-            <td class="issue-td"><%= @issue.joint_application %></td>
-          </tr>
-          <tr>
-            <th scope="row" class="issue-row">併用</th>
-            <td class="issue-td"><%= @issue.combined_use %></td>
-          </tr>
-        </tbody>
-      </table>
+<div class="container">
+  <div class="row section issue-header">
+    <div class="col-md-6"><h1><%= @issue.title %></h1></div>
+    <div class="col-md-3 genre-box-wrapper">
+      <span class="genre-box">
+        <%= @issue.loan_or_pay %>
+      </span>
     </div>
-    <% if user_signed_in? %>
-    <%= link_to 'Edit', edit_issue_path, class: 'btn btn-primary btn-block' %>
-    <%= link_to 'Delete', issue_path(@issue), data: { confirm: "本当に削除しますか?" }, method: :delete, class: 'btn btn-danger btn-block' %>
-    <% end %>
-
-    <div class="comment-wrapper" style="margin-left: 40px;margin-top: 30px;">
-      <p class="main-header">Comment </p>
-
-      <%= link_to 'コメントを書く', new_comment_path(issue_id: @issue.id), remote: true, class: "btn btn-lg btn-primary", style: 'margin-bottom: 20px;'%>
-      <div id="comment-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="false" style="z-index: 1500"></div>
-
-      <% @comments.each do |comment| %>
-        <div class="comment-block" style="padding: 20px 20px; border-top: solid 1px;border-color: #caccd1">
-          <div style="font-size: 16px;"><%= comment.writer %></div>
-          <div class="text-muted"><%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分") %></div>
-          <div><%= comment.content %></div>
-        </div>
+    <div class="col-md-3">
+      <% if @issue.loan_or_pay == '貸与' && @issue.rate == '無利子' %>
+        <span class="interest-box">無利子</span>
+      <% elsif @issue.loan_or_pay == '貸与' %>
+        <span class="interest-box">有利子</span>
+      <% else %>
       <% end %>
     </div>
+    <div class="col-md-12">
+      <div class="issue-catch">
+        <% unless @issue.image_url.nil? %>
+          <% if @issue.image_url.class == Array %>
+            <%= image_tag @issue.image_url.first %>
+          <% else %>
+            <%= image_tag @issue.image_url %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
-
+  <div class="section row">
+    <div class="col-md-5">
+      <ul class="nav nav-tabs ">
+        <% @issue.schlorship_layers.each_with_index do |sc, index| %>
+          <li class="nav-item">
+            <% if index == 0 %>
+              <a class="nav-link active" data-toggle="tab" href="#<%= sc.layer %>"><%= sc.layer %></a>
+            <% else %>
+              <a class="nav-link" data-toggle="tab" href="#<%= sc.layer %>"><%= sc.layer %></a>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+      <div class="tab-content box-shadow">
+        <% @issue.schlorship_layers.each_with_index do |sc, index| %>
+            <% if index == 0 %>
+              <div class="tab-pane active" id="<%= sc.layer %>">
+            <% else %>
+              <div class="tab-pane" id="<%= sc.layer %>">
+            <% end %>
+              <table>
+                <tbody>
+                  <tr>
+                    <th>支給額</th>
+                    <td>¥ <span class="strong"><%= sc.price %></span> / 
+                      <%= '月' if sc.range == 'Month' %>
+                      <%= '年' if sc.range == 'Year' %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>支給期間</th>
+                    <td><span class="strong"><%= sc.get_duration %></span>年</td>
+                  </tr>
+                  <tr>
+                    <th>募集人数</th>
+                    <td><span class="strong"><%= sc.accept_number %></span>人</td>
+                  </tr>
+                  <tr>
+                    <th>対象地域</th>
+                    <td><span class="strong"><%= @issue.region %></span></td>
+                  </tr>
+    <!--          FIXME! 後で追加     
+                  <tr>
+                    <th>申込時期</th>
+                    <td><span class="strong">4</span>月</td>
+                  </tr> -->
+                </tbody>
+              </table>
+            </div>
+        <% end %>
+        <!-- <div class="tab-pane container" id="menu1">...</div> -->
+      </div>
+    </div>
+    <div class="col-md-7">
+      <section class="issue-sc">
+        <b>概要</b><br>
+        <div>貸与型の奨学金です。 全国の都道府県に窓口となる支部があります。</div>
+      </section>
+      <section class="issue-sc">
+        <b>支払詳細</b><br>
+        <div>奨学金の貸与期間は、正規の最短修業期間とします。貸与する奨学金の額は、修業期間1年につき25万円以内とし最高100万円とします。</div>
+      </section>
+      <section class="issue-sc">
+        <b>応募要件</b><br>
+        <div>国公私立大学院、大学、短期大学、高等専門学校および専修学校専門課程に在学し、学資金の支払いが困難と認められるものとします。ただし、高等専門学校については、第4学年以上の在学生に限るもの</div>
+      </section>
+      <%= link_to(@issue.url, target: '_blank') do %>
+      <span class="genre-box">
+        公式ページ
+      </span>
+      <% end %>
+      <br>
+    </div>
   </div>
+  <% if @issue.loan_or_pay  == '貸与' %>
+  <div class="row issue-bottom">
+    <div class="col-md-4">
+      <div>
+        <b>借入シュミレーター</b><br>
+        <%= form_tag(issue_path, method: :get) do %>
+        <table>
+          <tbody>
+            <tr>
+              <th>単年度借入額</th><td><%= number_field_tag :amount %> 円</td>
+            </tr>
+            <tr>
+              <th>借入年数</th><td><%= number_field_tag :year %> 年</td>
+            </tr>
+            <tr>
+              <th>返済年数</th><td><%= number_field_tag :back_year %> 年</td>
+            </tr>
+          </tbody>
+        </table>
+          <%= submit_tag("見積もる", class: 'button-sc') %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>単年度借入額  </th><td><%= @amount %> 円</td>
+            </tr>
+            <tr>
+              <th>借入年数  </th><td><%= @year %> 年</td>
+            </tr>
+            <tr>
+              <th>返済年数  </th><td><%= @back_year %> 年</td>
+            </tr>
+            <tr>
+              <th>単年度返済額  </th><td><%= @back_amount %>円</td>
+            </tr>
+          </tbody>
+        </table>
+        <canvas id="myChart" class="chart-canvas"></canvas>
+      </div>
+    </div>
+  </div>
+  <% end %>
 </div>
+
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    type: 'bar',
+
+    data: {
+        labels: <%= raw @labels %>,
+        datasets: [{
+            label: "返済残高",
+            backgroundColor: '#6699ff',
+            borderColor: '#6699ff',
+            data: <%= @data %>,
+        }]
+    },
+
+    options: {
+      title: {
+        display: true,
+        text: "<%= @issue.title %>"
+      }
+    }
+});
+</script>

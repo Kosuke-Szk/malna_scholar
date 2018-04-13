@@ -1,0 +1,158 @@
+<!--[if IE 7 ]><html class="ie ie7 lte9 lte8 lte7" lang="en-US"><![endif]-->
+<!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="en-US">  <![endif]-->
+<!--[if IE 9]><html class="ie ie9 lte9" lang="en-US"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="noIE" lang="en-US">
+<meta name="description" content="奨学金検索なら「奨学金Navi」。日本全国の奨学金を手軽に調べることができます。">
+<meta name=”keywords” content="奨学金,日本,まとめ,検索,大学生">
+<!--<![endif]-->
+  
+  <body>
+    <div id="wrapper">
+      <div class="container about-sec">
+        <div class="title-page">
+          <p class="main-header">Search</p>
+            <p class="sub-header">好きな条件で検索してみる
+          </p>
+        </div>
+        <div>
+          <div class="text-center aboutus-item">
+            <%= form_tag issue_index_path, :method => 'get' do %>
+              <p align="center">
+                <i class="fa fa-search" style="font-size: 26px;"></i>
+                <%= text_field_tag :search, params[:search],:placeholder => "スペース区切りで複数条件検索", class: 'form-control', style: 'width: 300px;display: inline;'%>
+                <%= submit_tag "Search", :name => nil , class: "btn btn-o", style: 'margin: 10px;'%>
+              </p>
+              <% if !@tags.empty? %>
+                <p style="text-align: center;width: 350px;display: inline-block;column-gap: inherit;list-style-position: initial;">
+                  <span style="font-size: 20px;">よく検索されるワード</span><br><br>
+                  <% @tags.each do |tag| %>
+                    <span class="label label-primary"><%= link_to tag, tag_search_issue_index_path(tag.name), style: "color: white;" %></span>
+                  <% end %>
+                </p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Genre -->
+      <div class="content-block" id="portfolio">
+        <div class="container portfolio-sec">
+          <header class="block-heading cleafix">
+            <%= link_to issue_index_path, class: "btn btn-o btn-lg pull-right" do %>
+              View All
+            <% end %>
+            <div class="title-page">
+              <p class="main-header">Genre </p>
+                <p class="sub-header">種類から探す</p>
+              </div>
+          </header>
+          <section class="block-body">
+            <div class="row">
+                <div class="col-sm-4 sc_block">
+                  <%= link_to issue_index_path(loan_or_pay: '給付', rate: 'なし') do %>
+                    <div class="recent-work" id="give">
+                      <div class="recent-work-inner">
+                          <div class="recent-work-badge">給付型</div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="col-sm-4 sc_block">
+                  <%= link_to issue_index_path(loan_or_pay: '貸与', rate: '無利子') do %>
+                    <div class="recent-work" id="interest-bearing">
+                      <div class="recent-work-inner">
+                          <div class="recent-work-badge">貸与型(無利子)</div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="col-sm-4 sc_block">
+                  <%= link_to issue_index_path(loan_or_pay: '貸与', rate: '有利子') do %>
+                    <div class="recent-work" id="interest-free">
+                      <div class="recent-work-inner">
+                          <div class="recent-work-badge">貸与型(有利子)</div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <!-- Genre -->
+
+      <!-- Location  -->
+      <div class="content-block" id="portfolio">
+        <div class="container portfolio-sec">
+          <header class="block-heading cleafix">
+            <%= link_to issue_index_path, class: "btn btn-o btn-lg pull-right" do %>
+              View All
+            <% end %>
+            <div class="title-page">
+              <p class="main-header">Location </p>
+                <p class="sub-header">地域から探す</p>
+              </div>
+          </header>
+          <section class="block-body">
+            <div class="row">
+              <% @issue_regions.each do |region| %>
+                <div class="col-sm-4 sc_block">
+                  <%= link_to issue_index_path(region: region) do %>
+                    <div class="recent-work" id="<%= region %>" >
+                      <div class="recent-work-inner">
+                        <% if region == 'all' %>
+                          <div class="recent-work-badge">全国</div>
+                        <% else %>
+                          <div class="recent-work-badge"><%= region %></div>
+                        <% end %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </section>
+        </div>
+      </div>
+      <!-- Location -->
+
+    </div><!--/#wrapper-->
+
+
+    <script type="text/javascript">
+      $("#全国").css("background","url(<%= image_url('bl_bg_all.jpg') %>)");
+      $("#全国").css("background-size", "cover");
+      $("#関東").css("background-image", "url(<%= image_url('bl_bg_tokyo.jpg') %>)");
+      $("#関東").css("background-size", "cover");
+      $("#近畿").css("background-image", "url(<%= image_url('bl_bg_osaka.jpg') %>)");
+      $("#近畿").css("background-size", "cover");
+      $("#中部").css("background-image", "url(<%= image_url('bl_bg_nagoya.jpg') %>)");
+      $("#中部").css("background-size", "cover");
+      $("#北海道").css("background-image", "url(<%= image_url('bl_bg_sapporo.jpg') %>)");
+      $("#北海道").css("background-size", "cover");
+      $("#東北").css("background-image", "url(<%= image_url('bl_bg_sendai.jpg') %>)");
+      $("#東北").css("background-size", "cover");
+      $("#北陸").css("background-image", "url(<%= image_url('bl_bg_kanazawa.jpg') %>)");
+      $("#北陸").css("background-size", "cover");
+      $("#中国").css("background-image", "url(<%= image_url('bl_bg_hiroshima.jpg') %>)");
+      $("#中国").css("background-size", "cover");
+      $("#九州").css("background-image", "url(<%= image_url('bl_bg_hakata.jpg') %>)");
+      $("#九州").css("background-size", "cover");
+      $("#四国").css("background-image", "url(<%= image_url('bl_bg_shikoku.jpg') %>)");
+      $("#四国").css("background-size", "cover");
+      $("#海外").css("background-image", "url(<%= image_url('bl_bg_plane.jpg') %>)");
+      $("#海外").css("background-size", "cover");
+
+      $("#give").css("background-image", "url(<%= image_url('bl_bg_give.jpg') %>)");
+      $("#give").css("background-size", "cover");
+      $("#interest-bearing").css("background-image", "url(<%= image_url('bl_bg_bearing.jpg') %>)");
+      $("#interest-bearing").css("background-size", "cover");
+      $("#interest-free").css("background-image", "url(<%= image_url('bl_bg_free.jpg') %>)");
+      $("#interest-free").css("background-size", "cover");
+    </script>
+
+
+  </body>
+</html>

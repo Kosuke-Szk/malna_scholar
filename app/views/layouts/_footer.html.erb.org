@@ -1,0 +1,43 @@
+<div class="content-block" id="footer">
+  <div class="container">
+    <div class="row">
+      <br> <br>
+        <div class="col-sm-6 blog-post">
+          <h2 class="footer-block">About Contact</h2>
+          <div>
+            現在、ご利用くださる皆様のフィードバックを元に改善を進めています。 <br>
+            どんなささいなことでも結構ですので、ご意見、ご質問いただけると幸いです。 <br><br>
+          </div>
+
+          <h2 class="footer-block">免責事項</h2>
+          <div>
+            「奨学金Navi」（以下、当サイトとする）は、malna株式会社（以下、当社とする）が管理、運営しています。 <br>
+            当サイトを利用される場合は、ここに記載した条件に準拠いただくものとします。当サイトをご利用いただいた時点で、以下利用条件の全てに同意頂いたものとさせて頂きます。 <br>
+            1. 当サイトは、お客様の便宜に供する為のものであり、お客様御自身の責任において利用頂く事ができるものとします。 <br>
+            2. 第三者、または当社に損害や不利益を与える行為、第三者、または当社の信用や名誉を損なう行為は禁止とさせて頂きます。 <br>
+            3. 当サイトに収録・掲載されているコンテンツのレイアウト、デザインおよび構造に関する著作権は当社に帰属します。画像等ご利用の際には事前に当社の承諾が必要です。 <br>
+          </div>
+        </div>
+        <div class="col-sm-6 blog-post">
+          
+          <h2 class="footer-block">Contact Details</h2>
+          <ul>
+            <li class="address-sub"><i class="fa fa-envelope-o"></i>Email Address</li>
+              <p>
+                <a href="mailto:malna.inc.info@gmail.com">malna.inc.info@gmail.com</a>
+              </p>
+
+
+          </ul>
+          
+        </div>
+      </div>
+  </div>
+</div>
+<div class="content-block footer-bottom" id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">&copy; Copyright Malna.inc 2018</div>
+    </div>
+  </div>
+</div><!-- #footer -->

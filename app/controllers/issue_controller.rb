@@ -18,8 +18,13 @@ class IssueController < ApplicationController
     @issue = Issue.find(params[:id])
     IssueLog.createLog(params[:id])
     @comment = Comment.new
-
     @comments = @issue.comments.all
+    params[:amount].to_i != 0 ? @amount = params[:amount].to_i : @amount = 1000000
+    params[:year].to_i != 0 ? @year = params[:year].to_i : @year = 4
+    params[:back_year].to_i != 0 ? @back_year = params[:back_year].to_i : @back_year = 10
+    # params[:back_amount].to_i != 0 ? @back_amount = params[:back_amount].to_i : @back_amount = 20000
+    @data, @back_amount = Issue.create_graph_data(@amount, @year, @back_year)
+    @labels = Issue.create_graph_label(@year + @back_year)
   end
 
   def create
@@ -69,6 +74,23 @@ class IssueController < ApplicationController
       # issue.id = issue_id
       # issue.tag_list = [ws[row, 12]]
       # issue.save!
+    end
+    Issue.all.each do |issue|
+      issue.update(image_url: Issue.get_og_image(issue.url))
+    end
+    redirect_to root_path
+  end
+
+  def create_sc_layer_from_ws
+    session = GoogleDrive::Session.from_config("config.json")
+    ws = session.spreadsheet_by_key("10cgHCmhXFmVCMKGRv1tomRRykZpTz5koenF92Eu2LYY").worksheets[3]
+    max_row = ws.num_rows
+    max_col = ws.num_cols
+    # Issue.destroy_all
+    ActiveRecord::Base.connection.execute("TRUNCATE TABLE schlorship_layers;")
+    (2..max_row).each do |row|
+      sc = SchlorshipLayer.new(issue_id: ws[row, 1], title: ws[row, 2], layer:ws[row, 3], layer_data:ws[row, 4], price:ws[row, 5], range:ws[row, 6], accept_number:ws[row, 7], get_duration:ws[row, 8], back_duration:ws[row, 9])
+      sc.save
     end
     redirect_to root_path
   end

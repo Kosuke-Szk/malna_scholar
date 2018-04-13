@@ -1,24 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-language" content="ja">
     <%= analytics_init if Rails.env.production? %>
     <title>日本全国の奨学金を一括検索「奨学金Navi」</title>
     <%= csrf_meta_tags %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'jquery-2.1.3.min' %>
-    <%= javascript_include_tag 'jquery.actual.min' %>
-    <%= javascript_include_tag 'jquery.scrollTo.min' %>
-    <%= javascript_include_tag 'contact' %>
-    <%= javascript_include_tag 'script' %>
-    <%= javascript_include_tag 'smoothscroll' %>
-    <%= javascript_include_tag 'bootstrap' %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    'bootstrap.min' %>
-    <%= stylesheet_link_tag    'font-awesome.min' %>
-    <%= stylesheet_link_tag    'style', media: 'screen' %>
-
+    <meta  name="viewport" content="width=device-width">
     <!-- meta -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -31,9 +23,9 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Serif:regular,bold"/>
     <%= favicon_link_tag('favicon.ico') %>
   </head>
-  <%= render 'layouts/header' %>
   <body>
+    <%= render 'layouts/header' %>
     <%= yield %>
+    <%= render 'layouts/footer' %>
   </body>
-  <%= render 'layouts/footer' %>
 </html>

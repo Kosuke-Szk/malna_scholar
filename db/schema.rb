@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180304010013) do
+ActiveRecord::Schema.define(version: 20180410184751) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "writer", null: false
@@ -41,6 +41,22 @@ ActiveRecord::Schema.define(version: 20180304010013) do
     t.string "combined_use"
     t.string "rate"
     t.string "payment"
+    t.string "image_url"
+  end
+
+  create_table "schlorship_layers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "issue_id"
+    t.string "title"
+    t.string "layer"
+    t.string "layer_data"
+    t.string "price"
+    t.string "range"
+    t.string "accept_number"
+    t.string "get_duration"
+    t.string "back_duration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["issue_id"], name: "index_schlorship_layers_on_issue_id"
   end
 
   create_table "taggings", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -85,4 +101,5 @@ ActiveRecord::Schema.define(version: 20180304010013) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "schlorship_layers", "issues"
 end
