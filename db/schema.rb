@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20180410184751) do
 
   create_table "issues", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
-    t.string "url"
+    t.text "url"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

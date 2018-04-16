@@ -16,12 +16,10 @@
     </div>
     <div class="col-md-12">
       <div class="issue-catch">
-        <% unless @issue.image_url.nil? %>
-          <% if @issue.image_url.class == Array %>
-            <%= image_tag @issue.image_url.first %>
-          <% else %>
-            <%= image_tag @issue.image_url %>
-          <% end %>
+        <% unless @issue.image_url.blank? %>
+          <%= image_tag @issue.image_url %>
+        <% else %>
+          <%= image_tag 'img_main_scholarship.jpg' %>
         <% end %>
       </div>
     </div>
@@ -57,11 +55,17 @@
                   </tr>
                   <tr>
                     <th>支給期間</th>
-                    <td><span class="strong"><%= sc.get_duration %></span>年</td>
+                    <td><span class="strong"><%= sc.get_duration %></span><%= '年' unless sc.get_duration == '-' %></td>
                   </tr>
                   <tr>
                     <th>募集人数</th>
-                    <td><span class="strong"><%= sc.accept_number %></span>人</td>
+                    <td>
+                      <% unless sc.accept_number == '-' %>
+                        <span class="strong"><%= sc.accept_number %></span>人
+                      <% else %>
+                        <span class="strong"><%= sc.accept_number %></span>
+                      <% end %>
+                    </td>
                   </tr>
                   <tr>
                     <th>対象地域</th>
@@ -100,6 +104,7 @@
       <br>
     </div>
   </div>
+<br>
   <% if @issue.loan_or_pay  == '貸与' %>
   <div class="row issue-bottom">
     <div class="col-md-4">

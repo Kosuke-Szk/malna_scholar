@@ -39,31 +39,23 @@
           </div>
           <div class="title">学年</div>
           <div>
-            <span class="grade-checkbox"><input type="checkbox" name=""><span>B1</span></span>
-            <span class="grade-checkbox"><input type="checkbox" name=""><span>B2</span></span>
-            <span class="grade-checkbox"><input type="checkbox" name=""><span>B3</span></span>
-            <span class="grade-checkbox"><input type="checkbox" name=""><span>B4</span></span>
+            <span class="grade-checkbox"><input type="checkbox" name="grade[]" value="B1"><span>B1</span></span>
+            <span class="grade-checkbox"><input type="checkbox" name="grade[]" value="B2"><span>B2</span></span>
+            <span class="grade-checkbox"><input type="checkbox" name="grade[]" value="B3"><span>B3</span></span>
+            <span class="grade-checkbox"><input type="checkbox" name="grade[]" value="B4"><span>B4</span></span>
+            <span class="grade-checkbox"><input type="checkbox" name="grade[]" value="B5"><span>B5</span></span>
             <br>
-            <span class="grade-checkbox"><input type="checkbox" name=""><span>B5</span></span>
-            <span class="grade-checkbox"><input type="checkbox" name=""><span>B6</span></span>
-            <span class="grade-checkbox"><input type="checkbox" name=""><span>M1</span></span>
-            <span class="grade-checkbox"><input type="checkbox" name=""><span>M2</span></span>
+            <span class="grade-checkbox"><input type="checkbox" name="grade[]" value="B6"><span>B6</span></span>
+            <span class="grade-checkbox"><input type="checkbox" name="grade[]" value="M1"><span>M1</span></span>
+            <span class="grade-checkbox"><input type="checkbox" name="grade[]" value="M2"><span>M2</span></span>
+            <span class="grade-checkbox"><input type="checkbox" name="grade[]" value="D1"><span>D1</span></span>
+            <span class="grade-checkbox"><input type="checkbox" name="grade[]" value="D2"><span>D2</span></span>
             <br>
-            <span class="grade-checkbox"><input type="checkbox" name=""><span>D1</span></span>
-            <span class="grade-checkbox"><input type="checkbox" name=""><span>D2</span></span>
-            <span class="grade-checkbox"><input type="checkbox" name=""><span>D3</span></span>
-            <span class="grade-checkbox"><input type="checkbox" name=""><span>高校生以下</span></span>
-          </div>
-          <div class="title">専攻</div>
-          <div>
-            <span class="major-checkbox"><input type="checkbox" name=""><span>理系</span></span>
-            <span class="major-checkbox"><input type="checkbox" name=""><span>理系</span></span>
+            <span class="grade-checkbox"><input type="checkbox" name="grade[]" value="D3"><span>D3</span></span>
+            <span class="grade-checkbox"><input type="checkbox" name="grade[]" value="高専"><span>高専</span></span>
+            <span class="grade-checkbox"><input type="checkbox" name="grade[]" value="専門"><span>専門学校</span></span>
             <br>
-            <span class="major-checkbox"><input type="checkbox" name=""><span>理系</span></span>
-            <span class="major-checkbox"><input type="checkbox" name=""><span>理系</span></span>
-            <br>
-            <span class="major-checkbox"><input type="checkbox" name=""><span>理系</span></span>
-            <span class="major-checkbox"><input type="checkbox" name=""><span>理系</span></span>
+            <span class="grade-checkbox"><input type="checkbox" name="grade[]" value="高校生以下"><span>高校生以下</span></span>
           </div>
           <div class="title">地域</div>
           <div>
@@ -90,8 +82,6 @@
             <%= f.check_box :region, {multiple: true},'海外',nil %>
             <span>海外</span>
           </div>
-          <div class="title">支給額</div>
-          <div></div>
           <button class="button-sc">検索</button>
         <% end %>
       </div>
@@ -107,7 +97,8 @@
                 <div><span class="title"><%= issue.title %></span></div>
                 <div>
                   <span class="index">支給額</span><br>
-                  <span class="payment"><span class="number">25</span> 万/年</span>
+                  <span class="payment"><span class="number">¥ <%= issue.schlorship_layers.first.price unless issue.schlorship_layers.first.nil? %></span> /年</span>
+                  <br>
                   <span class="genre-box">
                     <%= issue.loan_or_pay %>
                   </span>

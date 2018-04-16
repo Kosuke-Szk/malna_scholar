@@ -1,6 +1,6 @@
 class Issue < ApplicationRecord
   has_many :comments
-  has_many :schlorship_layers
+  has_many :schlorship_layers, dependent: :destroy
 
   acts_as_taggable
 
@@ -16,12 +16,27 @@ class Issue < ApplicationRecord
         sql_body += " title LIKE '%#{pattern}%' OR region LIKE '%#{pattern}%' OR description LIKE '%#{pattern}%' OR requirement LIKE '%#{pattern}%' "
       end
       sql = "select * from issues where #{sql_body} order by id desc"
-      memo_ids = Issue.find_by_sql(sql)
+      issue_ids = Issue.find_by_sql(sql)
       ids = []
-      memo_ids.each do |qi|
+      issue_ids.each do |qi|
         ids.push(qi.id)
       end
       where(:id => ids)
+    else
+      Issue.all
+    end
+  end
+
+  def self.search_by_grade(grade)
+    if grade
+      sql_body = ''
+      grade.each do | pattern |
+        sql_body += ' OR ' unless sql_body.blank?
+        sql_body += " layer_data LIKE '%#{pattern}%' "
+      end
+      sql = "SELECT * FROM schlorship_layers WHERE #{sql_body} ORDER BY id DESC"
+      ids = SchlorshipLayer.find_by_sql(sql).pluck(:issue_id)
+      find(ids)
     else
       Issue.all
     end

@@ -7,7 +7,7 @@ class IssueController < ApplicationController
   PER = 9
 
   def index
-    @issues = Issue.search_from_all(params[:search]).search_by_region(params[:region]).search_by_loan(params[:loan_or_pay], params[:rate]).page(params[:page]).per(PER)
+    @issues = Issue.search_by_grade(params[:grade]).search_from_all(params[:search]).search_by_region(params[:region]).search_by_loan(params[:loan_or_pay], params[:rate]).page(params[:page]).per(PER)
   end
 
   def new
@@ -61,23 +61,24 @@ class IssueController < ApplicationController
   end
 
   def create_from_ws
+    # ActiveRecord::Base.connection.execute("TRUNCATE TABLE issues;")
+
     session = GoogleDrive::Session.from_config("config.json")
     ws = session.spreadsheet_by_key("10cgHCmhXFmVCMKGRv1tomRRykZpTz5koenF92Eu2LYY").worksheets[2]
     max_row = ws.num_rows
     max_col = ws.num_cols
     # Issue.destroy_all
-    ActiveRecord::Base.connection.execute("TRUNCATE TABLE issues;")
-    issue_id = 240
+    # issue_id = 240
     (2..max_row).each do |row|
-      issue_id += 1
-      issue = Issue.create(id: issue_id, title: ws[row, 1], url:ws[row, 2], description:ws[row, 3], loan_or_pay:ws[row, 4], number_of_people:ws[row, 5], requirement:ws[row, 6], region:ws[row, 7], rate:ws[row, 8], payment:ws[row, 9], joint_application:ws[row, 10], combined_use:ws[row, 11])
+      # issue_id += 1
+      issue = Issue.create(id: ws[row, 1], title: ws[row, 2], url:ws[row, 3], description:ws[row, 4], loan_or_pay:ws[row, 5], number_of_people:ws[row, 6], requirement:ws[row, 7], region:ws[row, 9], rate:ws[row, 10], payment:ws[row, 11], joint_application:ws[row, 12], combined_use:ws[row, 13], image_url: ws[row, 15])
       # issue.id = issue_id
       # issue.tag_list = [ws[row, 12]]
       # issue.save!
     end
-    Issue.all.each do |issue|
-      issue.update(image_url: Issue.get_og_image(issue.url))
-    end
+    # Issue.all.each do |issue|
+    #   issue.update(image_url: Issue.get_og_image(issue.url))
+    # end
     redirect_to root_path
   end
 
@@ -89,7 +90,7 @@ class IssueController < ApplicationController
     # Issue.destroy_all
     ActiveRecord::Base.connection.execute("TRUNCATE TABLE schlorship_layers;")
     (2..max_row).each do |row|
-      sc = SchlorshipLayer.new(issue_id: ws[row, 1], title: ws[row, 2], layer:ws[row, 3], layer_data:ws[row, 4], price:ws[row, 5], range:ws[row, 6], accept_number:ws[row, 7], get_duration:ws[row, 8], back_duration:ws[row, 9])
+      sc = SchlorshipLayer.new(issue_id: ws[row, 1], title: ws[row, 2], layer:ws[row, 3], layer_data:ws[row, 4], price:ws[row, 5], range:ws[row, 7], accept_number:ws[row, 8], get_duration:ws[row, 9], back_duration:ws[row, 10])
       sc.save
     end
     redirect_to root_path
