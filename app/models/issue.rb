@@ -36,7 +36,8 @@ class Issue < ApplicationRecord
       end
       sql = "SELECT * FROM schlorship_layers WHERE #{sql_body} ORDER BY id DESC"
       ids = SchlorshipLayer.find_by_sql(sql).pluck(:issue_id)
-      find(ids)
+      # find(ids)
+      where(:id => ids)
     else
       Issue.all
     end
@@ -87,20 +88,20 @@ class Issue < ApplicationRecord
 
   def self.search_mutiple_loan(params={})
     if params[:loan_or_pay]
-      results = Issue.by_loan(params[:loan_or_pay])
+      by_loan(params[:loan_or_pay])
     else
-      results = Issue.all
+      Issue.all
     end
-    return results
+    # return results
   end
 
   def self.search_multiple_region(params={})
     if params[:region]
-      results = Issue.by_region(params[:region])
+      by_region(params[:region])
     else
-      results = Issue.all
+      Issue.all
     end
-    return results
+    # return results
   end
 
   def self.get_og_image(url)

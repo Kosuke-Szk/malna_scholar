@@ -5,6 +5,7 @@ class TopController < ApplicationController
     # @tags = ActsAsTaggableOn::Tag.most_used(10)
     @issue =  Issue.new
     @issues = Issue.search_from_all(params[:search])
+
     @issues = @issues.search_by_grade(params[:grade])
 
     unless params[:issue].nil?
