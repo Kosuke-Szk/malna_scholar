@@ -58,11 +58,23 @@ h1 {
     border: solid 1px #0099ff;
     border-radius: 2px;
     transition: .2s;
+    &:hover {
+        background: #0099ff;
+        color: white;
+    }
 }
 
-.button-sc:hover {
-    background: #0099ff;
-    color: white;
+@media screen and ( max-width:479px )
+{
+  .button-sc {
+      display: inline-block;
+      padding: 0.2em 0.9em;
+      text-decoration: none;
+      color: #0099ff;
+      border: solid 1px #0099ff;
+      border-radius: 2px;
+      background: white;
+  }
 }
 
 .partial {
@@ -193,6 +205,12 @@ h1 {
       .title {
         font-size: 22px;
       }
+      @media screen and ( max-width:479px )
+      {
+        .title {
+          font-size: 20px;
+        }
+      }
       .index {
         font-weight: bold;
       }
@@ -202,6 +220,14 @@ h1 {
           font-size: 30px;
           font-weight: bold;
           color: #FF3300;
+        }
+        @media screen and ( max-width:479px )
+        {
+          .number {
+            font-size: 22px;
+            font-weight: bold;
+            color: #FF3300;
+          }
         }
       }
       .genre-box {
@@ -217,6 +243,23 @@ h1 {
         color: #333333;
         border: 1px solid #333333;
         margin-left: 20px;
+      }
+      @media screen and ( max-width:479px )
+      {
+        .genre-box {
+          font-size: 18px;
+          padding: 4px 22px;
+          color: #336666;
+          border: 1px solid #336666;
+          
+        }
+        .interest-box {
+          font-size: 18px;
+          padding: 4px 22px;
+          color: #333333;
+          border: 1px solid #333333;
+          margin-left: 20px;
+        }
       }
     }
     .item-text {
@@ -289,4 +332,11 @@ h1 {
 }
 .tab-content {
   padding-left: 15px;
+}
+
+@media screen and ( max-width:479px )
+{
+  #myChart {
+    height: 400px;
+  }
 }

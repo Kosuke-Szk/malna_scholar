@@ -1,9 +1,6 @@
 class Issue < ApplicationRecord
   has_many :comments
   has_many :schlorship_layers, dependent: :destroy
-
-  acts_as_taggable
-
   scope :by_loan,   lambda {|loan_or_pay| where(loan_or_pay: loan_or_pay)}
   scope :by_region, lambda {|region| where(region: region)}
 
@@ -36,8 +33,38 @@ class Issue < ApplicationRecord
       end
       sql = "SELECT * FROM schlorship_layers WHERE #{sql_body} ORDER BY id DESC"
       ids = SchlorshipLayer.find_by_sql(sql).pluck(:issue_id)
-      # find(ids)
       where(:id => ids)
+    else
+      Issue.all
+    end
+  end
+
+  def self.search_mutiple_loan(loan_or_pay, rates)
+    # if loan_or_pay && rates
+    if loan_or_pay
+      sql_body = ''
+      if rates
+        loan_or_pay.each_with_index do |lp, idx|
+          sql_body += ' OR ' unless sql_body.blank?
+          sql_body += " (loan_or_pay LIKE '%#{lp}%' AND rate LIKE '%#{rates[idx]}%') "
+        end
+      else
+        loan_or_pay.each do |lp|
+          sql_body += ' OR ' unless sql_body.blank?
+          sql_body += " (loan_or_pay LIKE '%#{lp}%') "
+        end
+      end
+      sql = "SELECT id FROM issues WHERE #{sql_body} ORDER BY id DESC"
+      ids = Issue.find_by_sql(sql).pluck(:id)
+      where(:id => ids)
+    else
+      Issue.all
+    end
+  end
+
+  def self.search_multiple_region(params={})
+    if params[:region]
+      by_region(params[:region])
     else
       Issue.all
     end
@@ -84,24 +111,6 @@ class Issue < ApplicationRecord
 
   def self.get_issue_regions()
     Issue.find_by_sql(['SELECT DISTINCT region FROM issues']).pluck(:region)
-  end
-
-  def self.search_mutiple_loan(params={})
-    if params[:loan_or_pay]
-      by_loan(params[:loan_or_pay])
-    else
-      Issue.all
-    end
-    # return results
-  end
-
-  def self.search_multiple_region(params={})
-    if params[:region]
-      by_region(params[:region])
-    else
-      Issue.all
-    end
-    # return results
   end
 
   def self.get_og_image(url)

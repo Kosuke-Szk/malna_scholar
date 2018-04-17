@@ -155,6 +155,8 @@
 
 <script>
 var ctx = document.getElementById('myChart').getContext('2d');
+ctx.canvas.height = 230;
+
 var chart = new Chart(ctx, {
     type: 'bar',
 
@@ -171,7 +173,7 @@ var chart = new Chart(ctx, {
     options: {
       title: {
         display: true,
-        text: "<%= @issue.title %>"
+        text: "<%= @issue.title %>",
       }
     }
 });

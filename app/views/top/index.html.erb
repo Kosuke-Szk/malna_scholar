@@ -30,9 +30,9 @@
         <%= form_for @issue ,url: root_path, method: :get do |f| %>
           <div class="title">形式</div>
           <div>
-            <%= f.check_box :loan_or_pay, {multiple: true},'貸与',nil %>
+            <%= f.check_box :loan_or_pay, {multiple: true, :onclick => "addParamRateOn()", id: 'rate_on'},'貸与',nil %>
             <span>貸与(有利子)</span><br>
-            <%= f.check_box :loan_or_pay, {multiple: true},'貸与',nil %>
+            <%= f.check_box :loan_or_pay, {multiple: true, :onclick => "addParamRateOff()", id: 'rate_off'},'貸与',nil %>
             <span>貸与(無利子)</span><br>
             <%= f.check_box :loan_or_pay, {multiple: true},'給付',nil %>
             <span>給付</span><br>
@@ -55,7 +55,8 @@
             <span class="grade-checkbox"><input type="checkbox" name="grade[]" value="高専"><span>高専</span></span>
             <span class="grade-checkbox"><input type="checkbox" name="grade[]" value="専門"><span>専門学校</span></span>
             <br>
-            <span class="grade-checkbox"><input type="checkbox" name="grade[]" value="高校生以下"><span>高校生以下</span></span>
+            <span class="grade-checkbox"><input type="checkbox" name="grade[]" value="短大"><span>短大</span></span>
+            <span class="grade-checkbox"><input type="checkbox" name="grade[]" value="高校生"><span>高校生以下</span></span>
           </div>
           <div class="title">地域</div>
           <div>
@@ -123,3 +124,20 @@
     </div>
   </div>
 </div>
+
+<script language="JavaScript">
+function addParamRateOn(){
+  if ($('#input_rate_on')[0]) {
+    $('#input_rate_on').remove();
+  } else {
+    $('#new_issue').append('<input type="hidden" name="rate[]" value="有利子" id="input_rate_on">');
+  }
+}
+function addParamRateOff(){
+  if ($('#input_rate_off')[0]) {
+    $('#input_rate_off').remove();
+  } else {
+    $('#new_issue').append('<input type="hidden" name="rate[]" value="無利子" id="input_rate_off">');
+  }
+}
+</script>
