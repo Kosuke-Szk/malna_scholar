@@ -83,12 +83,11 @@ class IssueController < ApplicationController
   end
 
   def create_sc_layer_from_ws
+    ActiveRecord::Base.connection.execute("TRUNCATE TABLE schlorship_layers;")
     session = GoogleDrive::Session.from_config("config.json")
     ws = session.spreadsheet_by_key("10cgHCmhXFmVCMKGRv1tomRRykZpTz5koenF92Eu2LYY").worksheets[3]
     max_row = ws.num_rows
     max_col = ws.num_cols
-    # Issue.destroy_all
-    ActiveRecord::Base.connection.execute("TRUNCATE TABLE schlorship_layers;")
     (2..max_row).each do |row|
       sc = SchlorshipLayer.new(issue_id: ws[row, 1], title: ws[row, 2], layer:ws[row, 3], layer_data:ws[row, 4], price:ws[row, 5], range:ws[row, 7], accept_number:ws[row, 8], get_duration:ws[row, 9], back_duration:ws[row, 10])
       sc.save

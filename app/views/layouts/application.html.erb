@@ -5,6 +5,19 @@
     <meta http-equiv="content-language" content="ja">
     <%= analytics_init if Rails.env.production? %>
     <title>日本全国の奨学金を一括検索「奨学金Navi」</title>
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    <meta property="og:title" content="奨学金Navi" />
+    <meta property="og:type" content=" website" />
+    <meta property="og:url" content="http://www.syogakukin.jp/" />
+    <meta property="og:image" content="<%= image_url('/og_image.jpeg') %>" />
+    <meta property="og:site_name" content="奨学金Navi" />
+    <meta property="og:description" content="『奨学金Navi』は、全国の高校生から大学院生までを対象とした奨学金を一括で検索・比較することができるサイトです。" />
+
+    <!--  Facebook用設定 -->
+    <meta property="fb:app_id" content="App-ID（15文字の半角数字）" />
+
+    <!-- ※ Twitter共通設定 -->
+    <meta name="twitter:card" content=" Twitterカードの種類" />
     <%= csrf_meta_tags %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
