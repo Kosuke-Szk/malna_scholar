@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="content-language" content="ja">
     <%= analytics_init if Rails.env.production? %>
-    <title>日本全国の奨学金を一括検索「奨学金Navi」</title>
+    <title><%= yield(:title).presence || "日本全国の奨学金を一括検索「奨学金Navi」" %></title>
+    <meta property="og:title" content="<%= yield(:og_title).presence || '日本全国の奨学金を一括検索「奨学金Navi」' %>" />
+
     <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
-    <meta property="og:title" content="奨学金Navi" />
+    
     <meta property="og:type" content=" website" />
     <meta property="og:url" content="http://www.syogakukin.jp/" />
     <meta property="og:image" content="<%= image_url('/og_image.jpeg') %>" />
